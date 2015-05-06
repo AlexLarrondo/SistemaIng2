@@ -1,0 +1,134 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 343
+  ClientWidth = 544
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 24
+    Top = 29
+    Width = 37
+    Height = 13
+    Caption = 'Nombre'
+  end
+  object Label2: TLabel
+    Left = 24
+    Top = 77
+    Width = 37
+    Height = 13
+    Caption = 'Apellido'
+  end
+  object Label3: TLabel
+    Left = 24
+    Top = 125
+    Width = 18
+    Height = 13
+    Caption = 'DNI'
+  end
+  object Button1: TButton
+    Left = 24
+    Top = 216
+    Width = 75
+    Height = 25
+    Caption = 'Registrar'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 105
+    Top = 216
+    Width = 75
+    Height = 25
+    Caption = 'Salir'
+    TabOrder = 1
+    OnClick = Button2Click
+  end
+  object Edit2: TEdit
+    Left = 24
+    Top = 96
+    Width = 121
+    Height = 21
+    TabOrder = 2
+  end
+  object Edit3: TEdit
+    Left = 24
+    Top = 144
+    Width = 121
+    Height = 21
+    MaxLength = 8
+    NumbersOnly = True
+    TabOrder = 3
+  end
+  object CheckBox1: TCheckBox
+    Left = 24
+    Top = 184
+    Width = 192
+    Height = 17
+    Caption = 'Ser'#233' encargado de mantenimiento'
+    TabOrder = 4
+  end
+  object GroupBox1: TGroupBox
+    Left = 0
+    Top = 0
+    Width = 545
+    Height = 345
+    Color = clMedGray
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -19
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 5
+    object CategoryPanelGroup1: TCategoryPanelGroup
+      Left = 2
+      Top = 24
+      Height = 319
+      VertScrollBar.Tracking = True
+      HeaderFont.Charset = DEFAULT_CHARSET
+      HeaderFont.Color = clWindowText
+      HeaderFont.Height = -11
+      HeaderFont.Name = 'Tahoma'
+      HeaderFont.Style = []
+      TabOrder = 0
+      ExplicitLeft = 48
+      ExplicitTop = 16
+    end
+    object DBRadioGroup1: TDBRadioGroup
+      Left = 280
+      Top = 216
+      Width = 185
+      Height = 105
+      Caption = 'DBRadioGroup1'
+      ParentBackground = True
+      TabOrder = 1
+    end
+    object GroupBox2: TGroupBox
+      Left = 280
+      Top = 44
+      Width = 185
+      Height = 105
+      Caption = 'GroupBox2'
+      TabOrder = 2
+    end
+  end
+  object Edit1: TEdit
+    Left = 16
+    Top = 44
+    Width = 121
+    Height = 21
+    TabOrder = 6
+  end
+end
