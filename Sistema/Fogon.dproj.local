@@ -21,6 +21,8 @@
     <Transaction>2015/05/04 20:02:56.296.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\UsuarioRegist.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\UsuarioRegistrado.dfm</Transaction>
     <Transaction>2015/05/04 20:03:10.109.pas,C:\Documents and Settings\Alex\Escritorio\Sistema\MenuPrincip.pas=C:\Documents and Settings\Alex\Escritorio\Sistema\MenuPrincipal.pas</Transaction>
     <Transaction>2015/05/04 20:03:10.109.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\MenuPrincip.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\MenuPrincipal.dfm</Transaction>
+    <Transaction>2015/05/08 19:19:24.875.pas,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit5.pas=C:\Documents and Settings\Alex\Escritorio\Sistema\RecuperarContraseña.pas</Transaction>
+    <Transaction>2015/05/08 19:19:24.875.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit5.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\RecuperarContraseña.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="Bases.pas"/>
@@ -33,5 +35,7 @@
     <File Path="UsuarioRegistrado.dfm"/>
     <File Path="MenuPrincipal.pas"/>
     <File Path="MenuPrincipal.dfm"/>
+    <File Path="RecuperarContraseña.pas"/>
+    <File Path="RecuperarContraseña.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

@@ -1,0 +1,231 @@
+object Form3: TForm3
+  AlignWithMargins = True
+  Left = 0
+  Top = 0
+  Width = 433
+  Height = 379
+  AutoScroll = True
+  AutoSize = True
+  Caption = 'Iniciar sesi'#243'n'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object GroupBox1: TGroupBox
+    Left = 0
+    Top = 0
+    Width = 417
+    Height = 241
+    Color = cl3DDkShadow
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 56
+      Top = 200
+      Width = 149
+      Height = 15
+      Cursor = crHandPoint
+      Caption = #191'Olvidaste tu contrase'#241'a?'
+      DragCursor = crHandPoint
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlue
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object GroupBox6: TGroupBox
+      Left = 37
+      Top = 22
+      Width = 185
+      Height = 73
+      Caption = 'Ingrese DNI'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+      object Edit5: TEdit
+        Left = 3
+        Top = 28
+        Width = 179
+        Height = 27
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        MaxLength = 8
+        NumbersOnly = True
+        ParentFont = False
+        TabOrder = 0
+      end
+    end
+    object GroupBox2: TGroupBox
+      Left = 37
+      Top = 121
+      Width = 185
+      Height = 73
+      Caption = 'Ingrese Contrase'#241'a'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+      object Edit2: TEdit
+        Left = 3
+        Top = 28
+        Width = 179
+        Height = 27
+        CharCase = ecUpperCase
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        MaxLength = 12
+        ParentFont = False
+        PasswordChar = '*'
+        TabOrder = 0
+        OnKeyPress = Edit2KeyPress
+      end
+    end
+    object Panel2: TPanel
+      Left = 270
+      Top = 50
+      Width = 91
+      Height = 55
+      AutoSize = True
+      BevelInner = bvLowered
+      BevelOuter = bvLowered
+      BevelWidth = 3
+      Caption = 'Panel1'
+      Color = clWhite
+      ParentBackground = False
+      ShowCaption = False
+      TabOrder = 2
+      object SpeedButton2: TSpeedButton
+        AlignWithMargins = True
+        Left = 6
+        Top = 6
+        Width = 79
+        Height = 43
+        Cursor = crHandPoint
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Caption = 'Ingresar '
+        Flat = True
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        OnClick = SpeedButton2Click
+      end
+    end
+    object Panel1: TPanel
+      Left = 270
+      Top = 121
+      Width = 91
+      Height = 55
+      AutoSize = True
+      BevelInner = bvLowered
+      BevelOuter = bvLowered
+      BevelWidth = 3
+      Caption = 'Panel1'
+      Color = clBtnHighlight
+      ParentBackground = False
+      ShowCaption = False
+      TabOrder = 3
+      object SpeedButton1: TSpeedButton
+        AlignWithMargins = True
+        Left = 6
+        Top = 6
+        Width = 79
+        Height = 43
+        Cursor = crHandPoint
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Caption = 'Salir'
+        Flat = True
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        OnClick = SpeedButton1Click
+      end
+    end
+  end
+  object Button1: TButton
+    Left = 286
+    Top = 192
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 239
+    Width = 417
+    Height = 102
+    DataSource = DM.DataSource1
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'DNI'
+        Width = 82
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Nombre'
+        Width = 49
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Apellido'
+        Width = 66
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Tipo'
+        Width = 96
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Pass'
+        ReadOnly = True
+        Width = 105
+        Visible = True
+      end>
+  end
+end

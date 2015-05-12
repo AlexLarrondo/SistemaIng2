@@ -1,0 +1,39 @@
+unit RecuperarContraseña;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Buttons, ExtCtrls, StdCtrls;
+
+type
+  TForm5 = class(TForm)
+    GroupBox1: TGroupBox;
+    GroupBox6: TGroupBox;
+    Edit5: TEdit;
+    GroupBox2: TGroupBox;
+    Edit2: TEdit;
+    Panel2: TPanel;
+    SpeedButton2: TSpeedButton;
+    Panel1: TPanel;
+    SpeedButton1: TSpeedButton;
+    GroupBox3: TGroupBox;
+    Edit1: TEdit;
+    GroupBox4: TGroupBox;
+    Edit3: TEdit;
+    GroupBox5: TGroupBox;
+    Edit4: TEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form5: TForm5;
+
+implementation
+
+{$R *.dfm}
+
+end.

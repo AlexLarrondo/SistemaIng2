@@ -1,0 +1,61 @@
+unit UsuarioRegistrado;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Bases, StdCtrls, MenuPrincipal, Buttons, ExtCtrls;
+
+type
+  TForm3 = class(TForm)
+    GroupBox1: TGroupBox;
+    GroupBox6: TGroupBox;
+    Edit5: TEdit;
+    GroupBox2: TGroupBox;
+    Edit2: TEdit;
+    Panel2: TPanel;
+    SpeedButton2: TSpeedButton;
+    Panel1: TPanel;
+    SpeedButton1: TSpeedButton;
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm3.Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+ if not (Key in ['A'..'Z', 'a'..'z','0'..'9',#8]) then
+    key := #0;
+end;
+
+procedure TForm3.SpeedButton1Click(Sender: TObject);
+begin
+  Form3.Close;
+end;
+
+procedure TForm3.SpeedButton2Click(Sender: TObject);
+begin
+  //Ingresar al sistema chequea el documento sea corecto que exista en la BD
+//e ingresa, caso contrario muestra mensaje.
+
+ if (Length(Edit5.Text)<7) then
+      ShowMessage('DNI INCORRECTO')
+      else
+         if (DM.Usuarios.Locate('DNI', Edit5.Text,[])) then
+            Form4.showModal
+            else
+              Showmessage('El DNI no se encuentra registrado')
+end;
+
+end.

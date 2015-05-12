@@ -2,8 +2,8 @@ object Form4: TForm4
   Left = 0
   Top = 0
   Caption = 'Form4'
-  ClientHeight = 291
-  ClientWidth = 532
+  ClientHeight = 328
+  ClientWidth = 585
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,13 +18,15 @@ object Form4: TForm4
     AlignWithMargins = True
     Left = 3
     Top = 3
-    Width = 526
-    Height = 285
+    Width = 579
+    Height = 322
     Align = alClient
     AutoSize = True
     Color = clWindow
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 526
+    ExplicitHeight = 285
     object Label1: TLabel
       Left = 22
       Top = 119
@@ -62,6 +64,7 @@ object Form4: TForm4
     end
     object Salir1: TMenuItem
       Caption = 'Salir'
+      OnClick = Salir1Click
     end
   end
 end

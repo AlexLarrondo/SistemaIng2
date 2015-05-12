@@ -1,13 +1,9 @@
 object DM: TDM
   OldCreateOrder = False
-  Height = 154
-  Width = 356
+  OnCreate = DataModuleCreate
+  Height = 224
+  Width = 387
   object ADOConnection1: TADOConnection
-    Connected = True
-    ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Se' +
-      'ttings\Alex\Escritorio\Sistema\Base\BaseDeDatos.mdb;Persist Secu' +
-      'rity Info=False'
     LoginPrompt = False
     Mode = cmShareDenyNone
     Provider = 'Microsoft.Jet.OLEDB.4.0'
@@ -15,7 +11,6 @@ object DM: TDM
     Top = 64
   end
   object Usuarios: TADOTable
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     TableName = 'Usuarios'
@@ -26,5 +21,24 @@ object DM: TDM
     DataSet = Usuarios
     Left = 256
     Top = 64
+  end
+  object ADOQuery1: TADOQuery
+    Connection = ADOConnection1
+    Parameters = <
+      item
+        Name = 'DNI'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT *'
+      'FROM Usuarios U'
+      'WHERE (U.DNI = :DNI) ')
+    Left = 264
+    Top = 128
   end
 end

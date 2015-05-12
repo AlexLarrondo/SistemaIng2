@@ -6,7 +6,8 @@ uses
   Bases in 'Bases.pas' {DM: TDataModule},
   Registrarse in 'Registrarse.pas' {Form2},
   UsuarioRegistrado in 'UsuarioRegistrado.pas' {Form3},
-  MenuPrincipal in 'MenuPrincipal.pas' {Form4};
+  MenuPrincipal in 'MenuPrincipal.pas' {Form4},
+  RecuperarContraseña in 'RecuperarContraseña.pas' {Form5};
 
 {$R *.res}
 
@@ -18,5 +19,6 @@ begin
   Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TForm3, Form3);
   Application.CreateForm(TForm4, Form4);
+  Application.CreateForm(TForm5, Form5);
   Application.Run;
 end.
