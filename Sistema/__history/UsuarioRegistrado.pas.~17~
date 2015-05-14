@@ -61,7 +61,7 @@ end;
 
 procedure TForm3.SpeedButton1Click(Sender: TObject);
 begin
-{Cierra el formulari0 sin iniciar sesión}
+{Cierra el formulari sin iniciar sesión}
   Form3.Close;
 end;
 
@@ -85,14 +85,13 @@ begin
               DM.ADOQuery1.Open;
               DM.DataSource1.DataSet:=DM.ADOQuery1;
               if Edit2.Text <> DM.Usuarios.Fields[4].AsString then
-                MessageDlg('Contraseña incorrecta, vuelva a intentarlo',mterror,[mbOk],0)
+                ShowMessage('Pass incorrecto')
 
                 else  begin
                   MessageDlg ('¡Bienvenido '+DM.Usuarios.Fields[1].AsString+' '
                   +DM.Usuarios.Fields[2].AsString+'!',mtinformation,[mbOk],0);
-                  Close;
                   Form4.ShowModal;
-
+                  Close;
                 end;
 
 

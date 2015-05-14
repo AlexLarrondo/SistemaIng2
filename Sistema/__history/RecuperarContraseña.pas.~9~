@@ -38,7 +38,6 @@ type
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
-    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -62,25 +61,6 @@ letras y números}
     key := #0;
 end;
 
-procedure TForm5.FormActivate(Sender: TObject);
-begin
-  Edit1.text:='';
-  Edit2.text:='';
-  Edit3.text:='';
-  Edit4.text:='';
-  Edit5.text:='';
-  GroupBox3.visible:=false;
-  GroupBox4.Visible:=false;
-  GroupBox2.visible:=false;
-  GroupBox5.Visible:=false;
-  Panel3.Visible:=false;
-  Panel4.Visible:=false;
-  Panel5.Visible:=false;
-  Panel6.Visible:=false;
-  Panel1.Visible:=true;
-  Panel2.Visible:=true;
-end;
-
 procedure TForm5.SpeedButton1Click(Sender: TObject);
 begin
 {Cierra el formulario sin guardar cambios}
@@ -91,26 +71,22 @@ procedure TForm5.SpeedButton2Click(Sender: TObject);
 begin
 {Consulta SQL para quedarnos con los datos de usuario de el DNI ingresado,
 en caso de no existir se notifica. Si existe se abren campos ocultos a llenar}
-  if Length(Edit5.Text)=0 then
-     MessageDlg('Ingrese el DNI',mterror,[mbOk],0)
-     else
-      DM.ADOQuery1.Close;
-      DM.ADOQuery1.Parameters.ParamByName('DNI').Value:=Edit5.Text;
-      DM.ADOQuery1.Open;
-      DM.DataSource1.DataSet:=DM.ADOQuery1;
-      if Edit5.Text <> DM.Usuarios.Fields[0].AsString then
-        MessageDlg('El DNI no se encuentra registrado',mterror,[mbOk],0)
-        else begin
-          GroupBox3.visible:=true;
-          GroupBox4.Visible:=true;
-          Panel1.Visible:=false;
-          Panel2.Visible:=false;
-          Panel3.Visible:=true;
-          Panel4.Visible:=true;
-
-          Edit1.Text:=DM.Usuarios.Fields[1].AsString[1];
-          Edit3.Text:=DM.Usuarios.Fields[2].AsString[1];
-        end;
+  DM.ADOQuery1.Close;
+  DM.ADOQuery1.Parameters.ParamByName('DNI').Value:=Edit5.Text;
+  DM.ADOQuery1.Open;
+  DM.DataSource1.DataSet:=DM.ADOQuery1;
+  if Edit5.Text <> DM.Usuarios.Fields[0].AsString then
+    MessageDlg('El DNI no se encuentra registrado',mterror,[mbOk],0)
+    else begin
+      GroupBox3.visible:=true;
+      GroupBox4.Visible:=true;
+      Panel1.Visible:=false;
+      Panel2.Visible:=false;
+      Panel3.Visible:=true;
+      Panel4.Visible:=true;
+      Edit1.Text:=DM.Usuarios.Fields[1].AsString[1];
+      Edit3.Text:=DM.Usuarios.Fields[2].AsString[1];
+    end;
 end;
 
 procedure TForm5.SpeedButton3Click(Sender: TObject);
@@ -123,7 +99,6 @@ begin
       Panel4.Visible:=false;
       Panel5.Visible:=true;
       Panel6.Visible:=true;
-
   end
   else
     MessageDlg('Los datos ingresados no coinciden con los registrados', mterror,[mbOk],0);
@@ -138,25 +113,23 @@ begin
    Panel4.Visible:=false;
    Panel1.Visible:=true;
    Panel2.Visible:=true;
-
 end;
 
 procedure TForm5.SpeedButton5Click(Sender: TObject);
 begin
 {Verifica que la contraseña no sea menos a 4 dígitos, que coincida la
 confirmación y edita con el nuevo pass para ese usuario}
-  if (Length(Edit4.Text)<4) then
+  if (Length(Edit4.Text)<4)  then
     MessageDlg ('La contraseña debe tener mínimo 4 caracteres',mtInformation,[mbOk],0)
     else
-    if Edit2.Text = Edit4.Text then begin
+    if Edit2.Text = Edit4.Text then
+      if (MessageDlg('¿Confirma modificar su contraseña?',mtWarning,[mbYes,mbNo],0)= mbYes) then
+        begin
       DM.Usuarios.Edit;
       DM.Usuarios.FieldByName('Pass').AsString:=Edit2.Text;
-      if (MessageDlg('¿Confirma modificar su contraseña?',mtWarning,[mbYes,mbNo],0)= mrYes) then
-        begin
-        DM.Usuarios.Post;
-        MessageDlg('Su contraseña fue modificada con éxito',mtinformation,[mbOk],0);
-        Close;
-        end
+      DM.Usuarios.Post;
+      MessageDlg('Su contraseña fue modificada con éxito',mtinformation,[mbOk],0);
+      Close;
     end
     else
       MessageDlg ('No coinciden las contraseñas',mterror,[mbOk],0) ;
@@ -176,8 +149,6 @@ begin
    Panel6.Visible:=false;
    Panel1.Visible:=true;
    Panel2.Visible:=true;
-
-
 
 end;
 

@@ -53,20 +53,20 @@ begin
   crea un nuevo registro retornando al formulario bienvenida.
   "Intentar mejorar los if then else if then else..."}
     if ((Length(Edit1.Text)=0) or (Length(Edit2.Text)=0) or (Length(Edit3.Text)=0)or (Length(Edit4.Text)=0)or (Length(Edit5.Text)=0)) then
-        MessageDlg('Faltan ingresar datos',mterror,[mbOk],0)
+       ShowMessage('FALTAN INGRESAR DATOS')
        else
        if (Length(Edit3.Text)<7) then
-          MessageDlg('DNI incorrecto',mterror,[mbOk],0)
+          ShowMessage('DNI INCORRECTO')
           else
             if (Length(Edit4.Text)<4)  then
-              MessageDlg ('La contraseña debe tener mínimo 4 caracteres',mtError,[mbOk],0)
+              ShowMessage ('La contraseña debe tener mínimo 4 caracteres')
               else
               if Edit4.Text <> Edit5.Text then
-                MessageDlg('No coincide la contraseña con la confirmación',mterror,[mbOk],0)
+                ShowMessage ('No coincide la contraseña con la confirmación')
                 else
                 if (DM.Usuarios.Locate('DNI', Edit3.Text,[])) then  BEGIN
-                  MessageDlg('Ya existe un usuario para el DNI ingresado', mtinformation,[mbOk],0);
-
+                  ShowMessage('YA EXISTE UN USUARIO PARA ESTE DNI');
+                  Close;
                   END
                   else begin
                       DM.Usuarios.Append;
@@ -79,7 +79,6 @@ begin
                         else
                           DM.Usuarios.FieldByName('Tipo').AsString:='Usuario común';
                       DM.Usuarios.post;
-                      MessageDlg('Se ha registrado con éxito',mtInformation,[mbOk],0);
                       Close;
                       end;
 end;

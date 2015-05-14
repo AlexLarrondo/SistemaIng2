@@ -90,9 +90,8 @@ begin
                 else  begin
                   MessageDlg ('¡Bienvenido '+DM.Usuarios.Fields[1].AsString+' '
                   +DM.Usuarios.Fields[2].AsString+'!',mtinformation,[mbOk],0);
-                  Close;
                   Form4.ShowModal;
-
+                  Close;
                 end;
 
 

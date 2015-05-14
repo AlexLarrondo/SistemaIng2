@@ -754,7 +754,6 @@ object Form5: TForm5
     0000F00F0000}
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox

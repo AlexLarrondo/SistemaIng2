@@ -66,7 +66,7 @@ begin
                 else
                 if (DM.Usuarios.Locate('DNI', Edit3.Text,[])) then  BEGIN
                   MessageDlg('Ya existe un usuario para el DNI ingresado', mtinformation,[mbOk],0);
-
+                  Close;
                   END
                   else begin
                       DM.Usuarios.Append;

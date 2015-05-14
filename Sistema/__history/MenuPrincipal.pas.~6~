@@ -47,7 +47,7 @@ implementation
 procedure TForm4.Salir1Click(Sender: TObject);
 begin
 {Permite al usuario salir del sistema, atajo Alt+S}
-  if (MessageDlg('¿Está seguro que desea cerrar sesión y salir del sistema?',mtWarning,[mbYes,mbNo],0)= mryes) then
+  if (MessageDlg('¿Está seguro que desea cerrar sesión y salir del sistema?',mtWarning,[mbYes,mbNo],0)= mbYes) then
     Close;
 end;
 
