@@ -1218,4 +1218,13 @@ object Form1: TForm1
       OnClick = SpeedButton2Click
     end
   end
+  object Button1: TButton
+    Left = 277
+    Top = 64
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 2
+    OnClick = Button1Click
+  end
 end

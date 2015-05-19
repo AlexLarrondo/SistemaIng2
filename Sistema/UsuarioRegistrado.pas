@@ -83,21 +83,16 @@ begin
               DM.ADOQuery1.Close;
               DM.ADOQuery1.Parameters.ParamByName('DNI').Value:=Edit5.Text;
               DM.ADOQuery1.Open;
-              DM.DataSource1.DataSet:=DM.ADOQuery1;
-              if Edit2.Text <> DM.Usuarios.Fields[4].AsString then
+              if Edit2.Text <> DM.ADOQuery1.Fields[4].AsString then
                 MessageDlg('Contraseña incorrecta, vuelva a intentarlo',mterror,[mbOk],0)
 
                 else  begin
-                  MessageDlg ('¡Bienvenido '+DM.Usuarios.Fields[1].AsString+' '
-                  +DM.Usuarios.Fields[2].AsString+'!',mtinformation,[mbOk],0);
+                  MessageDlg ('¡Bienvenido '+DM.ADOQuery1.Fields[1].AsString+' '
+                  +DM.ADOQuery1.Fields[2].AsString+'!',mtinformation,[mbOk],0);
                   Close;
                   Form4.ShowModal;
-
                 end;
-
-
             end;
-
 end;
 
 end.

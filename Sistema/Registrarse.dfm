@@ -1,8 +1,8 @@
 object Form2: TForm2
   Left = 0
   Top = 0
-  Width = 521
-  Height = 407
+  Width = 513
+  Height = 396
   ActiveControl = Edit1
   AutoScroll = True
   AutoSize = True
@@ -815,7 +815,7 @@ object Form2: TForm2
     end
     object CheckBox1: TCheckBox
       Left = 289
-      Top = 232
+      Top = 237
       Width = 250
       Height = 36
       Caption = 'Ser'#233' encargado de mantenimiento'

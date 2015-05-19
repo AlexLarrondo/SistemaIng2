@@ -11,6 +11,12 @@ type
     Usuarios: TADOTable;
     DataSource1: TDataSource;
     ADOQuery1: TADOQuery;
+    UsuariosDNI: TIntegerField;
+    UsuariosNombre: TWideStringField;
+    UsuariosApellido: TWideStringField;
+    UsuariosTipo: TWideStringField;
+    UsuariosPass: TWideStringField;
+    UsuariosEstado: TWideStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

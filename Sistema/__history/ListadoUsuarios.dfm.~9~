@@ -1,0 +1,260 @@
+object Form6: TForm6
+  Left = 0
+  Top = 0
+  Width = 495
+  Height = 310
+  AutoScroll = True
+  AutoSize = True
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'Listado de Usuarios'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DBGrid1: TDBGrid
+    AlignWithMargins = True
+    Left = 6
+    Top = 6
+    Width = 478
+    Height = 272
+    Color = clBtnFace
+    DataSource = DM.DataSource1
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    ParentFont = False
+    ParentShowHint = False
+    ReadOnly = True
+    ShowHint = False
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Touch.ParentTabletOptions = False
+    Touch.TabletOptions = [toPressAndHold]
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'Nombre'
+        PopupMenu = PopupMenu1
+        Width = 124
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Apellido'
+        PopupMenu = PopupMenu1
+        Width = 157
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DNI'
+        PopupMenu = PopupMenu1
+        Width = 135
+        Visible = True
+      end>
+  end
+  object GroupBox1: TGroupBox
+    AlignWithMargins = True
+    Left = 3
+    Top = 3
+    Width = 457
+    Height = 277
+    Color = cl3DDkShadow
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 1
+    Visible = False
+    object GroupBox4: TGroupBox
+      Left = 26
+      Top = 24
+      Width = 185
+      Height = 73
+      Caption = 'Nombre'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+      object DBEdit1: TDBEdit
+        Left = 3
+        Top = 26
+        Width = 182
+        Height = 27
+        CharCase = ecUpperCase
+        DataField = 'Nombre'
+        DataSource = DM.DataSource1
+        TabOrder = 0
+        OnKeyPress = DBEdit1KeyPress
+      end
+    end
+    object GroupBox2: TGroupBox
+      Left = 242
+      Top = 24
+      Width = 185
+      Height = 73
+      Caption = 'Apellido'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+      object DBEdit3: TDBEdit
+        Left = 3
+        Top = 26
+        Width = 182
+        Height = 27
+        CharCase = ecUpperCase
+        DataField = 'Apellido'
+        DataSource = DM.DataSource1
+        TabOrder = 0
+        OnKeyPress = DBEdit1KeyPress
+      end
+    end
+    object GroupBox3: TGroupBox
+      Left = 26
+      Top = 103
+      Width = 185
+      Height = 73
+      Caption = 'DNI'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 2
+      object DBEdit2: TDBEdit
+        Left = 3
+        Top = 26
+        Width = 182
+        Height = 27
+        BiDiMode = bdLeftToRight
+        DataField = 'DNI'
+        DataSource = DM.DataSource1
+        MaxLength = 8
+        ParentBiDiMode = False
+        TabOrder = 0
+        OnKeyPress = DBEdit2KeyPress
+      end
+    end
+    object Panel2: TPanel
+      Left = 100
+      Top = 207
+      Width = 111
+      Height = 50
+      AutoSize = True
+      BevelInner = bvLowered
+      BevelOuter = bvLowered
+      BevelWidth = 3
+      Caption = 'Panel1'
+      Color = clWhite
+      ParentBackground = False
+      ShowCaption = False
+      TabOrder = 3
+      object SpeedButton2: TSpeedButton
+        AlignWithMargins = True
+        Left = 6
+        Top = 6
+        Width = 99
+        Height = 38
+        Cursor = crHandPoint
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Caption = 'Modificar'
+        Flat = True
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        OnClick = SpeedButton2Click
+      end
+    end
+    object Panel1: TPanel
+      Left = 242
+      Top = 207
+      Width = 111
+      Height = 50
+      AutoSize = True
+      BevelInner = bvLowered
+      BevelOuter = bvLowered
+      BevelWidth = 3
+      Caption = 'Panel1'
+      Color = clWhite
+      ParentBackground = False
+      ShowCaption = False
+      TabOrder = 4
+      object SpeedButton1: TSpeedButton
+        AlignWithMargins = True
+        Left = 6
+        Top = 6
+        Width = 99
+        Height = 38
+        Cursor = crHandPoint
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Caption = 'Cancelar'
+        Flat = True
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        OnClick = SpeedButton1Click
+      end
+    end
+    object CheckBox1: TCheckBox
+      Left = 242
+      Top = 125
+      Width = 177
+      Height = 36
+      Caption = 'Ser'#225' encargado de mantenimiento'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 5
+      WordWrap = True
+    end
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 368
+    Top = 48
+    object ModificarUsurio1: TMenuItem
+      Caption = 'Modificar Usuario'
+      OnClick = ModificarUsurio1Click
+    end
+    object EliminarUsuario1: TMenuItem
+      Caption = 'Eliminar Usuario'
+      OnClick = EliminarUsuario1Click
+    end
+  end
+end

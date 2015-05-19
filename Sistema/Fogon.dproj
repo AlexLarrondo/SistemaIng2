@@ -62,6 +62,9 @@
 			<DCCReference Include="RecuperarContraseña.pas">
 				<Form>Form5</Form>
 			</DCCReference>
+			<DCCReference Include="ListadoUsuarios.pas">
+				<Form>Form6</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

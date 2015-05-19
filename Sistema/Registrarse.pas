@@ -74,8 +74,9 @@ begin
                       DM.Usuarios.FieldByName('Apellido').AsString:=Edit2.Text;
                       DM.Usuarios.FieldByName('DNI').AsString:=Edit3.Text;
                       DM.Usuarios.FieldByName('Pass').AsString:=Edit4.Text;
+                      DM.Usuarios.FieldByName('Estado').AsString:='Activo';
                       if CheckBox1.Checked then
-                        DM.Usuarios.FieldByName('Tipo').AsString:='Manteniminto'
+                        DM.Usuarios.FieldByName('Tipo').AsString:='Mantenimiento'
                         else
                           DM.Usuarios.FieldByName('Tipo').AsString:='Usuario común';
                       DM.Usuarios.post;

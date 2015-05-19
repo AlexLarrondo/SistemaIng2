@@ -15,8 +15,10 @@ type
     SpeedButton1: TSpeedButton;
     Panel2: TPanel;
     SpeedButton2: TSpeedButton;
+    Button1: TButton;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -29,6 +31,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+Form4.ShowModal;
+end;
 
 procedure TForm1.SpeedButton1Click(Sender: TObject);
 begin

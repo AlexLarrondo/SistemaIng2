@@ -23,6 +23,12 @@
     <Transaction>2015/05/04 20:03:10.109.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\MenuPrincip.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\MenuPrincipal.dfm</Transaction>
     <Transaction>2015/05/08 19:19:24.875.pas,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit5.pas=C:\Documents and Settings\Alex\Escritorio\Sistema\RecuperarContraseña.pas</Transaction>
     <Transaction>2015/05/08 19:19:24.875.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit5.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\RecuperarContraseña.dfm</Transaction>
+    <Transaction>2015/05/19 15:56:19.234.pas,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit6.pas=C:\Documents and Settings\Alex\Escritorio\Sistema\ListadoUsuarios.pas</Transaction>
+    <Transaction>2015/05/19 15:56:19.234.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit6.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\ListadoUsuarios.dfm</Transaction>
+    <Transaction>2015/05/19 16:49:59.750.pas,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit7.pas=C:\Documents and Settings\Alex\Escritorio\Sistema\ModificarUsuario.pas</Transaction>
+    <Transaction>2015/05/19 16:49:59.750.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit7.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\ModificarUsuario.dfm</Transaction>
+    <Transaction>2015/05/19 16:56:36.765.pas,C:\Documents and Settings\Alex\Escritorio\Sistema\ModificarUsuario.pas=</Transaction>
+    <Transaction>2015/05/19 16:56:36.765.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\ModificarUsuario.dfm=</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="Bases.pas"/>
@@ -37,5 +43,7 @@
     <File Path="MenuPrincipal.dfm"/>
     <File Path="RecuperarContraseña.pas"/>
     <File Path="RecuperarContraseña.dfm"/>
+    <File Path="ListadoUsuarios.pas"/>
+    <File Path="ListadoUsuarios.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

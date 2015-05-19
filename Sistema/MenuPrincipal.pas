@@ -5,7 +5,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, StdCtrls, ExtCtrls, jpeg;
+  Dialogs, Menus, StdCtrls, ExtCtrls, jpeg, ListadoUsuarios, Bases;
 
 type
   TForm4 = class(TForm)
@@ -29,8 +29,9 @@ type
     Salir2: TMenuItem;
     Image1: TImage;
     Listarusuarios1: TMenuItem;
-    Dardebajausuario1: TMenuItem;
     procedure Salir1Click(Sender: TObject);
+    procedure Listarusuarios1Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,14 +40,25 @@ type
 
 var
   Form4: TForm4;
+  Nombre,Apellido,Tipo: String;
 
 implementation
 
 {$R *.dfm}
 
+procedure TForm4.FormActivate(Sender: TObject);
+begin
+ Nombre:= DM.ADOQuery1.FieldByName('Nombre').AsString;
+ Apellido:= DM.ADOQuery1.FieldByName('Apellido').AsString;
+end;
+
+procedure TForm4.Listarusuarios1Click(Sender: TObject);
+begin
+  Form6.Show;
+end;
+
 procedure TForm4.Salir1Click(Sender: TObject);
 begin
-{Permite al usuario salir del sistema, atajo Alt+S}
   if (MessageDlg('¿Está seguro que desea cerrar sesión y salir del sistema?',mtWarning,[mbYes,mbNo],0)= mryes) then
     Close;
 end;

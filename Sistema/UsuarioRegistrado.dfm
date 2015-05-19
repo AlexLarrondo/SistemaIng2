@@ -2,8 +2,8 @@ object Form3: TForm3
   AlignWithMargins = True
   Left = 0
   Top = 0
-  Width = 433
-  Height = 279
+  Width = 425
+  Height = 268
   ActiveControl = Edit5
   AutoScroll = True
   AutoSize = True
