@@ -1,0 +1,36 @@
+unit AltaEvento;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ComCtrls, Buttons, ExtCtrls, StdCtrls;
+
+type
+  TForm9 = class(TForm)
+    GroupBox1: TGroupBox;
+    Label1: TLabel;
+    GroupBox2: TGroupBox;
+    Edit1: TEdit;
+    GroupBox3: TGroupBox;
+    Panel2: TPanel;
+    SpeedButton2: TSpeedButton;
+    Panel1: TPanel;
+    SpeedButton1: TSpeedButton;
+    GroupBox5: TGroupBox;
+    DateTimePicker2: TDateTimePicker;
+    DateTimePicker1: TDateTimePicker;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form9: TForm9;
+
+implementation
+
+{$R *.dfm}
+
+end.

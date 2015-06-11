@@ -1,0 +1,245 @@
+object Form7: TForm7
+  Left = 0
+  Top = 0
+  AutoSize = True
+  Caption = 'Alta de un producto'
+  ClientHeight = 409
+  ClientWidth = 505
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object GroupBox1: TGroupBox
+    Left = 0
+    Top = 0
+    Width = 505
+    Height = 409
+    Color = cl3DDkShadow
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -19
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 283
+      Top = 114
+      Width = 3
+      Height = 15
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object GroupBox2: TGroupBox
+      Left = 150
+      Top = 56
+      Width = 203
+      Height = 73
+      Caption = 'Nombre'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+      object Edit1: TEdit
+        Left = 16
+        Top = 24
+        Width = 161
+        Height = 27
+        TabOrder = 0
+      end
+    end
+    object GroupBox3: TGroupBox
+      Left = 359
+      Top = 150
+      Width = 122
+      Height = 73
+      Caption = 'Cantidad'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+      object Edit3: TEdit
+        Left = 14
+        Top = 32
+        Width = 91
+        Height = 27
+        NumbersOnly = True
+        TabOrder = 0
+      end
+    end
+    object GroupBox4: TGroupBox
+      Left = 196
+      Top = 150
+      Width = 125
+      Height = 73
+      Caption = 'Precio venta'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 2
+      object Label2: TLabel
+        Left = 9
+        Top = 35
+        Width = 9
+        Height = 19
+        Caption = '$'
+      end
+      object Edit4: TEdit
+        Left = 24
+        Top = 32
+        Width = 89
+        Height = 27
+        TabOrder = 0
+        OnKeyPress = Edit5KeyPress
+      end
+    end
+    object Panel2: TPanel
+      Left = 118
+      Top = 340
+      Width = 111
+      Height = 50
+      AutoSize = True
+      BevelInner = bvLowered
+      BevelOuter = bvLowered
+      BevelWidth = 3
+      Caption = 'Panel1'
+      Color = clWhite
+      ParentBackground = False
+      ShowCaption = False
+      TabOrder = 4
+      object SpeedButton2: TSpeedButton
+        AlignWithMargins = True
+        Left = 6
+        Top = 6
+        Width = 99
+        Height = 38
+        Cursor = crHandPoint
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Caption = 'Dar de alta'
+        Flat = True
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        OnClick = SpeedButton2Click
+      end
+    end
+    object Panel1: TPanel
+      Left = 283
+      Top = 340
+      Width = 111
+      Height = 50
+      AutoSize = True
+      BevelInner = bvLowered
+      BevelOuter = bvLowered
+      BevelWidth = 3
+      Caption = 'Panel1'
+      Color = clWhite
+      ParentBackground = False
+      ShowCaption = False
+      TabOrder = 5
+      object SpeedButton1: TSpeedButton
+        AlignWithMargins = True
+        Left = 6
+        Top = 6
+        Width = 99
+        Height = 38
+        Cursor = crHandPoint
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Caption = 'Cancelar'
+        Flat = True
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        OnClick = SpeedButton1Click
+      end
+    end
+    object GroupBox5: TGroupBox
+      Left = 35
+      Top = 150
+      Width = 126
+      Height = 73
+      Caption = 'Precio compra'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 3
+      object Label3: TLabel
+        Left = 9
+        Top = 35
+        Width = 9
+        Height = 19
+        Caption = '$'
+      end
+      object Edit5: TEdit
+        Left = 24
+        Top = 27
+        Width = 89
+        Height = 27
+        TabOrder = 0
+        OnKeyPress = Edit5KeyPress
+      end
+    end
+    object GroupBox7: TGroupBox
+      Left = 147
+      Top = 246
+      Width = 206
+      Height = 73
+      Caption = 'Proveedor'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 6
+      object DBLookupComboBox1: TDBLookupComboBox
+        Left = 3
+        Top = 24
+        Width = 198
+        Height = 27
+        DataField = 'Proveedor'
+        DataSource = DM.DataSource3
+        KeyField = 'Nombre'
+        ListField = 'Nombre'
+        ListSource = DM.DataSource2
+        TabOrder = 0
+      end
+    end
+  end
+end

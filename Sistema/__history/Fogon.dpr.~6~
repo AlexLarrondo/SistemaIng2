@@ -1,0 +1,28 @@
+program Fogon;
+
+uses
+  Forms,
+  Bienvenida in 'Bienvenida.pas' {Form1},
+  Bases in 'Bases.pas' {DM: TDataModule},
+  Registrarse in 'Registrarse.pas' {Form2},
+  UsuarioRegistrado in 'UsuarioRegistrado.pas' {Form3},
+  MenuPrincipal in 'MenuPrincipal.pas' {Form4},
+  RecuperarContraseña in 'RecuperarContraseña.pas' {Form5},
+  ListadoUsuarios in 'ListadoUsuarios.pas' {Form6},
+  AltaProducto in 'AltaProducto.pas' {Form7};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TForm3, Form3);
+  Application.CreateForm(TForm4, Form4);
+  Application.CreateForm(TForm5, Form5);
+  Application.CreateForm(TForm6, Form6);
+  Application.CreateForm(TForm7, Form7);
+  Application.Run;
+end.

@@ -1,0 +1,67 @@
+unit ListadoEventosActivos;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Bases, Grids, DBGrids, Menus, Buttons, ExtCtrls, ComCtrls, StdCtrls;
+
+type
+  TForm10 = class(TForm)
+    DBGrid1: TDBGrid;
+    PopupMenu1: TPopupMenu;
+    ModificarEvento1: TMenuItem;
+    BorrarEvento1: TMenuItem;
+    GroupBox1: TGroupBox;
+    GroupBox2: TGroupBox;
+    Edit1: TEdit;
+    GroupBox3: TGroupBox;
+    DateTimePicker1: TDateTimePicker;
+    Panel2: TPanel;
+    SpeedButton2: TSpeedButton;
+    Panel1: TPanel;
+    SpeedButton1: TSpeedButton;
+    GroupBox5: TGroupBox;
+    DateTimePicker2: TDateTimePicker;
+    procedure FormActivate(Sender: TObject);
+    procedure ModificarEvento1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form10: TForm10;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm10.FormActivate(Sender: TObject);
+begin
+  DM.EventosActivos.Close;
+  DM.EventosActivos.Parameters.ParamByName('Fecha1').Value:= Datetostr(Now);
+  DM.EventosActivos.Parameters.ParamByName('Fecha2').Value:= Datetostr(Now);
+  DM.EventosActivos.Open;
+  DBGRID1.Columns[0].Width:=220;
+  DBGRID1.Columns[1].Width:=140;
+  DBGRID1.Columns[2].Width:=140;
+  DBGRID1.Columns[1].Title.Caption:='Fecha Inicio';
+  DBGRID1.Columns[2].Title.Caption:='Fecha Fin';
+  DBGrid1.Columns[0].PopupMenu:=PopUpMenu1;
+  DBGrid1.Columns[1].PopupMenu:=PopUpMenu1;
+  DBGrid1.Columns[2].PopupMenu:=PopUpMenu1;
+end;
+
+procedure TForm10.ModificarEvento1Click(Sender: TObject);
+begin
+{Mostramos los campos para la modifiacion del evento}
+  DbGrid1.Enabled:=false;
+  GroupBox1.Visible:=true;
+  Edit1.Text:=DM.EventosActivos.FieldByName('Nombre').AsString;
+  DateTimePicker2.Date:=DM.EventosActivos.FieldByName('Fecha_Inicio').AsDateTime;
+  DateTimePicker1.Date:=DM.EventosActivos.FieldByName('Fecha_Fin').AsDateTime;
+end;
+
+end.

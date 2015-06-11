@@ -5,7 +5,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, StdCtrls, ExtCtrls, jpeg, ListadoUsuarios, Bases;
+  Dialogs, Menus, StdCtrls, ExtCtrls, jpeg, ListadoUsuarios, Bases, AltaProducto,
+  ListadoProductos, AltaEvento, ListadoEventosActivos;
 
 type
   TForm4 = class(TForm)
@@ -19,8 +20,6 @@ type
     Salir1: TMenuItem;
     Usuarios1: TMenuItem;
     Dardealtaproducto1: TMenuItem;
-    Dardebajaproducto1: TMenuItem;
-    Modificarproducto1: TMenuItem;
     Listarpedidos1: TMenuItem;
     Modificarunpedido1: TMenuItem;
     Reportes1: TMenuItem;
@@ -29,9 +28,16 @@ type
     Salir2: TMenuItem;
     Image1: TImage;
     Listarusuarios1: TMenuItem;
+    Eventos1: TMenuItem;
+    Listareventosactivos1: TMenuItem;
+    Dardealtaunevento1: TMenuItem;
     procedure Salir1Click(Sender: TObject);
     procedure Listarusuarios1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure Dardealtaproducto1Click(Sender: TObject);
+    procedure ListarProductos1Click(Sender: TObject);
+    procedure Dardealtaunevento1Click(Sender: TObject);
+    procedure Listareventosactivos1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,16 +46,50 @@ type
 
 var
   Form4: TForm4;
-  Nombre,Apellido,Tipo: String;
+  Nombre,Apellido,Tipo,evento: String;
 
 implementation
 
+uses UsuarioRegistrado;
+
 {$R *.dfm}
+
+procedure TForm4.Dardealtaproducto1Click(Sender: TObject);
+begin
+  Form7.Show;
+end;
+
+procedure TForm4.Dardealtaunevento1Click(Sender: TObject);
+begin
+  Form9.Show;
+end;
 
 procedure TForm4.FormActivate(Sender: TObject);
 begin
+ evento:=form3.dblookupcombobox1.keyvalue;
  Nombre:= DM.ADOQuery1.FieldByName('Nombre').AsString;
  Apellido:= DM.ADOQuery1.FieldByName('Apellido').AsString;
+ Tipo:= DM.ADOQuery1.FieldByName('Tipo').AsString;
+ Form4.Caption:= 'SPR - Sistema de pedidos y reportes / Usuario: '+Nombre+' '+Apellido +' Evento: '+ evento ;
+ if Tipo = 'Usuario común' then begin
+    Dardealtaproducto1.Enabled:=false;
+    Eventos1.Enabled:=false
+  end
+    else begin
+      Dardealtaproducto1.Enabled:=true;
+      Eventos1.Enabled:=true
+    end;
+
+end;
+
+procedure TForm4.Listareventosactivos1Click(Sender: TObject);
+begin
+  Form10.show;
+end;
+
+procedure TForm4.ListarProductos1Click(Sender: TObject);
+begin
+  Form8.Show;
 end;
 
 procedure TForm4.Listarusuarios1Click(Sender: TObject);

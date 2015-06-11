@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Bases, StdCtrls, MenuPrincipal, Buttons, ExtCtrls, DBCtrls, Grids,
+  Dialogs, Bases, StdCtrls, Buttons, ExtCtrls, DBCtrls, Grids,
   DBGrids;
 
 type
@@ -19,6 +19,10 @@ type
     Panel1: TPanel;
     SpeedButton1: TSpeedButton;
     Label1: TLabel;
+    Label3: TLabel;
+    Label5: TLabel;
+    GroupBox3: TGroupBox;
+    DBLookupComboBox1: TDBLookupComboBox;
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
@@ -32,10 +36,11 @@ type
 
 var
   Form3: TForm3;
+  Evento: string;
 
 implementation
 
-uses RecuperarContraseña;
+uses RecuperarContraseña, MenuPrincipal;
 
 {$R *.dfm}
 
@@ -49,8 +54,11 @@ end;
 procedure TForm3.FormActivate(Sender: TObject);
 {Inicia el formulario con los campos en blanco}
 begin
+  DBLookUpComboBox1.KeyValue:='<Elije un evento>';
   Edit2.Text:='';
   Edit5.Text:='';
+  DM.UsuariosActivos.Close ;
+  DM.UsuariosActivos.Open;
 end;
 
 procedure TForm3.Label1Click(Sender: TObject);
@@ -77,7 +85,7 @@ begin
      if (Length(Edit5.Text)<7) then
       MessageDlg('DNI incorrecto',mterror,[mbOk],0)
       else
-        if not(DM.Usuarios.Locate('DNI', Edit5.Text,[])) then
+        if not(DM.UsuariosActivos.Locate('DNI', Edit5.Text,[])) then
             MessageDlg('El DNI ingresado no se encuentra registrado',mterror,[mbOk],0)
             else  begin
               DM.ADOQuery1.Close;
@@ -85,12 +93,15 @@ begin
               DM.ADOQuery1.Open;
               if Edit2.Text <> DM.ADOQuery1.Fields[4].AsString then
                 MessageDlg('Contraseña incorrecta, vuelva a intentarlo',mterror,[mbOk],0)
-
-                else  begin
+                else
+                if (DM.ADOQuery1.Fields[3].AsString = 'Usuario común') and (DBLookUpComboBox1.KeyValue = '<Elije un evento>') then
+                  MessageDlg('Seleccione un evento',mterror,[mbOk],0)
+                  else  begin
+                  Evento:=dblookupcombobox1.keyvalue;
                   MessageDlg ('¡Bienvenido '+DM.ADOQuery1.Fields[1].AsString+' '
                   +DM.ADOQuery1.Fields[2].AsString+'!',mtinformation,[mbOk],0);
                   Close;
-                  Form4.ShowModal;
+                  Form4.Show;
                 end;
             end;
 end;

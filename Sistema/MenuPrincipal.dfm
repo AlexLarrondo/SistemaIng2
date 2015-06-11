@@ -1,6 +1,7 @@
 object Form4: TForm4
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'SPR - Sistema de pedidos y reportes'
   ClientHeight = 413
   ClientWidth = 687
@@ -1579,19 +1580,26 @@ object Form4: TForm4
         OnClick = Salir1Click
       end
     end
+    object Eventos1: TMenuItem
+      Caption = 'Eventos'
+      object Dardealtaunevento1: TMenuItem
+        Caption = 'Dar de alta un evento'
+        OnClick = Dardealtaunevento1Click
+      end
+      object Listareventosactivos1: TMenuItem
+        Caption = 'Listar eventos activos'
+        OnClick = Listareventosactivos1Click
+      end
+    end
     object Pedidos1: TMenuItem
       Caption = '&Productos'
       object ListarProductos1: TMenuItem
         Caption = 'Listar Productos'
+        OnClick = ListarProductos1Click
       end
       object Dardealtaproducto1: TMenuItem
         Caption = 'Dar de alta producto'
-      end
-      object Dardebajaproducto1: TMenuItem
-        Caption = 'Dar de baja producto'
-      end
-      object Modificarproducto1: TMenuItem
-        Caption = 'Modificar producto'
+        OnClick = Dardealtaproducto1Click
       end
     end
     object Pedidos2: TMenuItem
@@ -1609,17 +1617,17 @@ object Form4: TForm4
         Caption = 'Modificar un pedido'
       end
     end
+    object Reportes1: TMenuItem
+      Caption = '&Reportes'
+      object Generarreportediario1: TMenuItem
+        Caption = 'Generar reporte '
+      end
+    end
     object Usuarios1: TMenuItem
       Caption = '&Usuarios'
       object Listarusuarios1: TMenuItem
         Caption = 'Listar usuarios'
         OnClick = Listarusuarios1Click
-      end
-    end
-    object Reportes1: TMenuItem
-      Caption = '&Reportes'
-      object Generarreportediario1: TMenuItem
-        Caption = 'Generar reporte '
       end
     end
     object Salir1: TMenuItem

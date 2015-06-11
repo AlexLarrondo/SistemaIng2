@@ -65,6 +65,21 @@
 			<DCCReference Include="ListadoUsuarios.pas">
 				<Form>Form6</Form>
 			</DCCReference>
+			<DCCReference Include="AltaProducto.pas">
+				<Form>Form7</Form>
+			</DCCReference>
+			<DCCReference Include="ListadoProductos.pas">
+				<Form>Form8</Form>
+			</DCCReference>
+			<DCCReference Include="AltaEvento.pas">
+				<Form>Form9</Form>
+			</DCCReference>
+			<DCCReference Include="ListadoEventosActivos.pas">
+				<Form>Form10</Form>
+			</DCCReference>
+			<DCCReference Include="GenerarPedido.pas">
+				<Form>Form11</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

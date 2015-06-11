@@ -1,0 +1,51 @@
+unit AltaEvento;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ComCtrls, Buttons, ExtCtrls, StdCtrls;
+
+type
+  TForm9 = class(TForm)
+    GroupBox1: TGroupBox;
+    GroupBox2: TGroupBox;
+    Edit1: TEdit;
+    GroupBox3: TGroupBox;
+    Panel2: TPanel;
+    SpeedButton2: TSpeedButton;
+    Panel1: TPanel;
+    SpeedButton1: TSpeedButton;
+    GroupBox5: TGroupBox;
+    DateTimePicker2: TDateTimePicker;
+    DateTimePicker1: TDateTimePicker;
+    procedure DateTimePicker2Change(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form9: TForm9;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm9.DateTimePicker2Change(Sender: TObject);
+begin
+  datetimepicker1.MinDate:=trunc(datetimepicker2.Date);
+end;
+
+procedure TForm9.FormActivate(Sender: TObject);
+begin
+  Edit1.Text:='';
+  DateTimePicker1.Date:=date;
+  DateTimePicker2.Date:=date;
+  datetimepicker1.MinDate:=date;
+  datetimepicker2.MinDate:=date;
+end;
+
+end.

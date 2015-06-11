@@ -1,13 +1,11 @@
 object Form2: TForm2
   Left = 0
   Top = 0
-  Width = 513
-  Height = 396
   ActiveControl = Edit1
-  AutoScroll = True
-  AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Registrarse'
+  ClientHeight = 394
+  ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -761,7 +759,7 @@ object Form2: TForm2
     Left = 0
     Top = 0
     Width = 505
-    Height = 369
+    Height = 393
     Color = cl3DDkShadow
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlue
@@ -784,12 +782,77 @@ object Form2: TForm2
       Font.Style = [fsBold]
       ParentFont = False
     end
+    object Label2: TLabel
+      Left = 34
+      Top = 300
+      Width = 124
+      Height = 16
+      Caption = '*Campos obligatorios'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 292
+      Top = 110
+      Width = 184
+      Height = 14
+      Caption = 'No se permiten s'#237'mbolos (, . - ! ? etc)'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 292
+      Top = 218
+      Width = 184
+      Height = 14
+      Caption = 'No se permiten s'#237'mbolos (, . - ! ? etc)'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 292
+      Top = 123
+      Width = 97
+      Height = 14
+      Caption = 'De 4 a 12 carcteres'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 292
+      Top = 230
+      Width = 97
+      Height = 14
+      Caption = 'De 4 a 12 carcteres'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
     object GroupBox2: TGroupBox
       Left = 31
-      Top = 48
+      Top = 35
       Width = 185
       Height = 73
-      Caption = 'Nombre'
+      Caption = '*Nombre'
       Font.Charset = ANSI_CHARSET
       Font.Color = clMaroon
       Font.Height = -16
@@ -814,11 +877,11 @@ object Form2: TForm2
       end
     end
     object CheckBox1: TCheckBox
-      Left = 289
-      Top = 237
+      Left = 283
+      Top = 250
       Width = 250
       Height = 36
-      Caption = 'Ser'#233' encargado de mantenimiento'
+      Caption = '*Ser'#233' encargado de mantenimiento'
       Font.Charset = ANSI_CHARSET
       Font.Color = clMaroon
       Font.Height = -16
@@ -832,10 +895,10 @@ object Form2: TForm2
     end
     object GroupBox3: TGroupBox
       Left = 31
-      Top = 134
+      Top = 123
       Width = 185
       Height = 73
-      Caption = 'Apellido'
+      Caption = '*Apellido'
       Font.Charset = ANSI_CHARSET
       Font.Color = clMaroon
       Font.Height = -16
@@ -860,11 +923,11 @@ object Form2: TForm2
       end
     end
     object GroupBox4: TGroupBox
-      Left = 28
+      Left = 31
       Top = 213
       Width = 188
       Height = 73
-      Caption = 'DNI'
+      Caption = '*DNI'
       Font.Charset = ANSI_CHARSET
       Font.Color = clMaroon
       Font.Height = -16
@@ -890,7 +953,7 @@ object Form2: TForm2
     end
     object Panel2: TPanel
       Left = 110
-      Top = 308
+      Top = 332
       Width = 111
       Height = 50
       AutoSize = True
@@ -925,8 +988,8 @@ object Form2: TForm2
       end
     end
     object Panel1: TPanel
-      Left = 283
-      Top = 308
+      Left = 286
+      Top = 332
       Width = 111
       Height = 50
       AutoSize = True
@@ -962,10 +1025,10 @@ object Form2: TForm2
     end
     object GroupBox6: TGroupBox
       Left = 283
-      Top = 135
+      Top = 143
       Width = 185
       Height = 73
-      Caption = 'Confirmar Contrase'#241'a'
+      Caption = '*Confirmar Contrase'#241'a'
       Font.Charset = ANSI_CHARSET
       Font.Color = clMaroon
       Font.Height = -16
@@ -978,7 +1041,6 @@ object Form2: TForm2
         Top = 28
         Width = 179
         Height = 27
-        CharCase = ecUpperCase
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -16
@@ -993,10 +1055,10 @@ object Form2: TForm2
     end
     object GroupBox5: TGroupBox
       Left = 283
-      Top = 48
+      Top = 35
       Width = 185
       Height = 73
-      Caption = 'Contrase'#241'a'
+      Caption = '*Contrase'#241'a'
       Font.Charset = ANSI_CHARSET
       Font.Color = clMaroon
       Font.Height = -16
@@ -1006,10 +1068,9 @@ object Form2: TForm2
       TabOrder = 3
       object Edit4: TEdit
         Left = 3
-        Top = 28
+        Top = 33
         Width = 179
         Height = 27
-        CharCase = ecUpperCase
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -16

@@ -1,0 +1,194 @@
+unit ListadoProductos;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Bases, Grids, DBGrids, StdCtrls, Mask, DBCtrls, Buttons, ExtCtrls,
+  Menus, AltaProducto;
+
+type
+  TForm8 = class(TForm)
+    DBGrid1: TDBGrid;
+    GroupBox1: TGroupBox;
+    GroupBox2: TGroupBox;
+    GroupBox3: TGroupBox;
+    GroupBox4: TGroupBox;
+    Panel2: TPanel;
+    SpeedButton2: TSpeedButton;
+    Panel1: TPanel;
+    SpeedButton1: TSpeedButton;
+    GroupBox5: TGroupBox;
+    GroupBox7: TGroupBox;
+    DBLookupComboBox1: TDBLookupComboBox;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    PopupMenu1: TPopupMenu;
+    Modificarproducto1: TMenuItem;
+    Eliminarproducto1: TMenuItem;
+    Label2: TLabel;
+    Panel3: TPanel;
+    Label1: TLabel;
+    Edit1: TEdit;
+    procedure DBEdit2KeyPress(Sender: TObject; var Key: Char);
+    procedure Eliminarproducto1Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure Modificarproducto1Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure DBEdit4KeyPress(Sender: TObject; var Key: Char);
+    procedure DBEdit2Change(Sender: TObject);
+    procedure DBEdit3Change(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form8: TForm8;
+  Tipo: String;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm8.DBEdit2Change(Sender: TObject);
+begin
+   if POS ('$',DBEdit2.Text) <> 0 then
+    DBEdit2.Text:=COPY(DBEdit2.Text,POS ('$',DBEdit2.Text)+1,Length(DBEdit2.text)-1);
+end;
+
+procedure TForm8.DBEdit2KeyPress(Sender: TObject; var Key: Char);
+{Permite ingresar solo numeros y solo una sola ',' .Si el valor ingresado
+es '.' lo transforma a ','.}
+var
+i,cantcoma: integer;
+begin
+  cantcoma:=0;
+  if not (Key in ['0'..'9',',','.', #7,#8]) then
+    key := #0
+    else
+    if ((key = '.') or (key = ',')) then begin
+      for i := 1 to length((Sender as TDBedit).Text) do
+        if (copy((Sender as Tdbedit).Text,i,1) =',') then
+          cantcoma:=cantcoma+1;
+        if cantcoma >=1 then
+          key:=#0
+          else
+            key:=',';
+    end;
+
+end;
+
+procedure TForm8.DBEdit3Change(Sender: TObject);
+begin
+  if POS ('$',DBEdit3.Text) <> 0 then
+    DBEdit3.Text:=COPY(DBEdit3.Text,POS ('$',DBEdit3.Text)+1,Length(DBEdit3.text)-1);
+end;
+
+procedure TForm8.DBEdit4KeyPress(Sender: TObject; var Key: Char);
+{Cantidad sean solo números}
+begin
+ if not (Key in ['0'..'9',#8]) then
+    key := #0;
+end;
+
+procedure TForm8.Edit1Change(Sender: TObject);
+{Filtra por teclado!}
+begin
+  DM.Productos.Filtered:=false;
+  if edit1.Text <> '' then  begin
+    DM.Productos.Filter:= '(Nombre like ''*'+edit1.Text+'*'' and   ''Estado = ''' + 'Activo' + '' ;
+    DM.Productos.Filtered:=true;
+  end;
+end;
+
+procedure TForm8.Eliminarproducto1Click(Sender: TObject);
+{Eliminamos al producto de manera lógica ingresando otro valor al
+campo estado}
+begin
+  if (MessageDlg('¿Confirma la elimnación del producto '+DM.Productos.Fields[0].AsString
+    +'?',mtWarning,[mbYes,mbNo],0)= mryes) then
+    begin
+      DM.Productos.Edit;
+      DM.Productos.FieldByName('Estado').AsString:='Desactivado';
+      DM.Productos.Post
+    end;
+end;
+
+procedure TForm8.FormActivate(Sender: TObject);
+{Dependiendo el tipo de usuario que este operando lo habilito a
+poer modificar y eliminar productos. En ADOQuery1 esta filtrado el
+usuario que esta operando}
+begin
+  Tipo:=DM.ADOQuery1.FieldByName('Tipo').AsString;
+  if Tipo = 'Usuario común' then begin
+    DBGrid1.Columns[0].PopupMenu:=nil;
+    DBGrid1.Columns[1].PopupMenu:=nil;
+    DBGrid1.Columns[2].PopupMenu:=nil;
+    DBGrid1.Columns[3].PopupMenu:=nil;
+    DBGrid1.Columns[4].PopupMenu:=nil;
+  end
+  else begin
+    DBGrid1.Columns[0].PopupMenu:=PopUpMenu1;
+    DBGrid1.Columns[1].PopupMenu:=PopUpMenu1;
+    DBGrid1.Columns[2].PopupMenu:=PopUpMenu1;
+    DBGrid1.Columns[3].PopupMenu:=PopUpMenu1;
+    DBGrid1.Columns[4].PopupMenu:=PopUpMenu1;
+  end;
+end;
+
+procedure TForm8.Modificarproducto1Click(Sender: TObject);
+{Mostramos los campos para la modifiacion del producto}
+begin
+  DbGrid1.Enabled:=false;
+  GroupBox1.Visible:=true;
+end;
+
+procedure TForm8.SpeedButton1Click(Sender: TObject);
+{Cancela la modificación}
+begin
+  DM.Productos.Cancel;
+  GroupBox1.Visible:=false;
+  DbGrid1.Enabled:=true;
+end;
+
+procedure TForm8.SpeedButton2Click(Sender: TObject);
+{Modificamos en la tabla a partir de los valores nuevos ingresados
+antes verificamos que los valores ingresados sean correctos y que todos
+los datos se ingresen}
+var
+nombre:string;
+begin
+  DM.ProductosActivos.Close;
+  DM.ProductosActivos.Open;
+  if ((Length(DBEdit1.Text)=0) or (Length(DBEdit2.Text)=0) or (Length(DBEdit3.Text)=0)) or (Length(DBEdit4.Text)=0)then
+    MessageDlg('Faltan ingresar datos',mterror,[mbOk],0)
+    else
+      if DM.Proveedores.FieldByName('Nombre').AsString = '<Elija un proveedor>' then
+        MessageDlg('Seleccione un proveedor',mterror,[mbOk],0)
+        else begin
+          nombre:=DM.Productos.FieldByName('Nombre').AsString;
+          if ((DBEdit1.Text <> nombre )
+          and (DM.ProductosActivos.Locate('Nombre',DBEdit1.Text,[]))) then
+              MessageDlg('Ya existe un producto con este nombre',mterror,[mbOk],0)
+              else begin
+                if POS ('$',DBEdit2.Text) <> 0 then
+                  DBEdit2.Text:=COPY(DBEdit2.Text,POS ('$',DBEdit2.Text)+1,Length(DBEdit2.text)-1);
+                if POS ('$',DBEdit3.Text) <> 0 then
+                  DBEdit3.Text:=COPY(DBEdit3.Text,POS ('$',DBEdit3.Text)+1,Length(DBEdit3.text)-1);
+                DM.Productos.Edit;
+                DM.Productos.Post;
+                MessageDlg('El producto se ha modificado',mtInformation,[mbOk],0);
+                GroupBox1.Visible:=false;
+                DbGrid1.Enabled:=true;
+              end;
+        end;
+end;
+
+
+end.

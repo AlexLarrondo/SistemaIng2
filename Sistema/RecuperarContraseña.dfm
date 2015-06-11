@@ -757,6 +757,32 @@ object Form5: TForm5
   OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
+  object Label1: TLabel
+    Left = 292
+    Top = 110
+    Width = 184
+    Height = 14
+    Caption = 'No se permiten s'#237'mbolos (, . - ! ? etc)'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = [fsItalic]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 292
+    Top = 123
+    Width = 97
+    Height = 14
+    Caption = 'De 4 a 12 carcteres'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = [fsItalic]
+    ParentFont = False
+  end
   object GroupBox1: TGroupBox
     AlignWithMargins = True
     Left = 3
@@ -767,6 +793,58 @@ object Form5: TForm5
     ParentBackground = False
     ParentColor = False
     TabOrder = 0
+    object Label3: TLabel
+      Left = 41
+      Top = 295
+      Width = 184
+      Height = 14
+      Caption = 'No se permiten s'#237'mbolos (, . - ! ? etc)'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 41
+      Top = 308
+      Width = 97
+      Height = 14
+      Caption = 'De 4 a 12 carcteres'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 255
+      Top = 295
+      Width = 184
+      Height = 14
+      Caption = 'No se permiten s'#237'mbolos (, . - ! ? etc)'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 256
+      Top = 308
+      Width = 97
+      Height = 14
+      Caption = 'De 4 a 12 carcteres'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
     object GroupBox6: TGroupBox
       Left = 37
       Top = 22
@@ -815,7 +893,6 @@ object Form5: TForm5
         Top = 28
         Width = 206
         Height = 27
-        CharCase = ecUpperCase
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -16
@@ -964,7 +1041,7 @@ object Form5: TForm5
     end
     object GroupBox5: TGroupBox
       Left = 255
-      Top = 219
+      Top = 216
       Width = 185
       Height = 73
       Caption = 'Confirma Contrase'#241'a'
@@ -981,7 +1058,6 @@ object Form5: TForm5
         Top = 28
         Width = 190
         Height = 27
-        CharCase = ecUpperCase
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -16
@@ -1070,7 +1146,7 @@ object Form5: TForm5
     end
     object Panel5: TPanel
       Left = 131
-      Top = 315
+      Top = 328
       Width = 91
       Height = 55
       AutoSize = True
@@ -1106,8 +1182,8 @@ object Form5: TForm5
       end
     end
     object Panel6: TPanel
-      Left = 261
-      Top = 315
+      Left = 256
+      Top = 328
       Width = 91
       Height = 55
       AutoSize = True

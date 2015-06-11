@@ -31,6 +31,12 @@ type
     Panel6: TPanel;
     SpeedButton6: TSpeedButton;
     Edit3: TEdit;
+    Label3: TLabel;
+    Label5: TLabel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label4: TLabel;
+    Label6: TLabel;
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
@@ -97,8 +103,7 @@ en caso de no existir se notifica. Si existe se abren campos ocultos a llenar}
       DM.ADOQuery1.Close;
       DM.ADOQuery1.Parameters.ParamByName('DNI').Value:=Edit5.Text;
       DM.ADOQuery1.Open;
-      DM.DataSource1.DataSet:=DM.ADOQuery1;
-      if Edit5.Text <> DM.Usuarios.Fields[0].AsString then
+      if Edit5.Text <> DM.ADOQuery1.Fields[0].AsString then
         MessageDlg('El DNI no se encuentra registrado',mterror,[mbOk],0)
         else begin
           GroupBox3.visible:=true;
@@ -108,22 +113,21 @@ en caso de no existir se notifica. Si existe se abren campos ocultos a llenar}
           Panel3.Visible:=true;
           Panel4.Visible:=true;
 
-          Edit1.Text:=DM.Usuarios.Fields[1].AsString[1];
-          Edit3.Text:=DM.Usuarios.Fields[2].AsString[1];
+          Edit1.Text:=DM.ADOQuery1.Fields[1].AsString[1];
+          Edit3.Text:=DM.ADOQuery1.Fields[2].AsString[1];
         end;
 end;
 
 procedure TForm5.SpeedButton3Click(Sender: TObject);
 begin
 {Chequea que el nombre y apellido ingresado sean correctos}
-  if ((Edit1.Text=DM.Usuarios.Fields[1].AsString) and (Edit3.Text=DM.Usuarios.Fields[2].AsString)) then begin
+  if ((Edit1.Text=DM.ADOQuery1.Fields[1].AsString) and (Edit3.Text=DM.ADOQuery1.Fields[2].AsString)) then begin
       GroupBox2.visible:=true;
       GroupBox5.Visible:=true;
       Panel3.Visible:=false;
       Panel4.Visible:=false;
       Panel5.Visible:=true;
       Panel6.Visible:=true;
-
   end
   else
     MessageDlg('Los datos ingresados no coinciden con los registrados', mterror,[mbOk],0);
@@ -138,7 +142,6 @@ begin
    Panel4.Visible:=false;
    Panel1.Visible:=true;
    Panel2.Visible:=true;
-
 end;
 
 procedure TForm5.SpeedButton5Click(Sender: TObject);
@@ -149,11 +152,11 @@ confirmación y edita con el nuevo pass para ese usuario}
     MessageDlg ('La contraseña debe tener mínimo 4 caracteres',mtInformation,[mbOk],0)
     else
     if Edit2.Text = Edit4.Text then begin
-      DM.Usuarios.Edit;
-      DM.Usuarios.FieldByName('Pass').AsString:=Edit2.Text;
+      DM.ADOQuery1.Edit;
+      DM.ADOQuery1.FieldByName('Pass').AsString:=Edit2.Text;
       if (MessageDlg('¿Confirma modificar su contraseña?',mtWarning,[mbYes,mbNo],0)= mrYes) then
         begin
-        DM.Usuarios.Post;
+        DM.ADOQuery1.Post;
         MessageDlg('Su contraseña fue modificada con éxito',mtinformation,[mbOk],0);
         Close;
         end
@@ -176,9 +179,6 @@ begin
    Panel6.Visible:=false;
    Panel1.Visible:=true;
    Panel2.Visible:=true;
-
-
-
 end;
 
 end.

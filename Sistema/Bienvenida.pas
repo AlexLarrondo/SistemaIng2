@@ -15,7 +15,6 @@ type
     SpeedButton1: TSpeedButton;
     Panel2: TPanel;
     SpeedButton2: TSpeedButton;
-    Button1: TButton;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);

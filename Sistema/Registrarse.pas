@@ -25,6 +25,11 @@ type
     GroupBox6: TGroupBox;
     Edit5: TEdit;
     Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -52,23 +57,42 @@ begin
   y confirmar contraseña, por ultima se fija que el DNI no exista en la base, y
   crea un nuevo registro retornando al formulario bienvenida.
   "Intentar mejorar los if then else if then else..."}
-    if ((Length(Edit1.Text)=0) or (Length(Edit2.Text)=0) or (Length(Edit3.Text)=0)or (Length(Edit4.Text)=0)or (Length(Edit5.Text)=0)) then
-        MessageDlg('Faltan ingresar datos',mterror,[mbOk],0)
-       else
-       if (Length(Edit3.Text)<7) then
-          MessageDlg('DNI incorrecto',mterror,[mbOk],0)
-          else
-            if (Length(Edit4.Text)<4)  then
-              MessageDlg ('La contraseña debe tener mínimo 4 caracteres',mtError,[mbOk],0)
-              else
+  if ((Length(Edit1.Text)=0) or (Length(Edit2.Text)=0) or (Length(Edit3.Text)=0)or (Length(Edit4.Text)=0)or (Length(Edit5.Text)=0)) then
+    MessageDlg('Faltan ingresar datos',mterror,[mbOk],0)
+    else
+      if (Length(Edit3.Text)<7) then
+        MessageDlg('DNI incorrecto',mterror,[mbOk],0)
+        else
+          if (Length(Edit4.Text)<4)  then
+            MessageDlg ('La contraseña debe tener mínimo 4 caracteres',mtError,[mbOk],0)
+            else
               if Edit4.Text <> Edit5.Text then
                 MessageDlg('No coincide la contraseña con la confirmación',mterror,[mbOk],0)
                 else
-                if (DM.Usuarios.Locate('DNI', Edit3.Text,[])) then  BEGIN
-                  MessageDlg('Ya existe un usuario para el DNI ingresado', mtinformation,[mbOk],0);
+                  if (DM.UsuariosActivos.Locate('DNI', Edit3.Text,[])) then
+                    MessageDlg('Ya existe un usuario para el DNI ingresado', mtinformation,[mbOk],0)
+                    else
+                      if DM.Usuarios.Locate('DNI',Edit3.Text,[]) then  begin
+                         if (MessageDlg('El usuario se encuentra borrado. ¿Deseá reactivar su usuario con los datos ingresados?',mtWarning,[mbYes,mbNo],0)= mryes) then begin
+                           DM.Usuarios.First;
+                           while not (DM.Usuarios.FieldByName('DNI').AsString = Edit3.Text)  do
+                            DM.Usuarios.Next;
+                           DM.Usuarios.Edit;
+                           DM.Usuarios.FieldByName('Estado').AsString:='Activo';
+                           DM.Usuarios.FieldByName('Nombre').AsString:=Edit1.Text;
+                           DM.Usuarios.FieldByName('Apellido').AsString:=Edit2.Text;
+                           DM.Usuarios.FieldByName('Pass').AsString:=Edit4.Text;
+                           if CheckBox1.Checked then
+                            DM.Usuarios.FieldByName('Tipo').AsString:='Mantenimiento'
+                            else
+                              DM.Usuarios.FieldByName('Tipo').AsString:='Usuario común';
+                           DM.Usuarios.Post;
+                           MessageDlg('Se ha reactivado su usuario con los datos ingresados actualmente',mtInformation,[mbOk],0);
+                           Close;
+                         end;
+                      end
 
-                  END
-                  else begin
+                    else begin
                       DM.Usuarios.Append;
                       DM.Usuarios.FieldByName('Nombre').AsString:=Edit1.Text;
                       DM.Usuarios.FieldByName('Apellido').AsString:=Edit2.Text;
@@ -111,8 +135,8 @@ begin
     Edit4.Text:='';
     Edit5.Text:='';
     CheckBox1.Checked:=false;
-
-
+    DM.UsuariosActivos.Close ;
+    DM.UsuariosActivos.Open;
 end;
 
 procedure TForm2.SpeedButton2Click(Sender: TObject);

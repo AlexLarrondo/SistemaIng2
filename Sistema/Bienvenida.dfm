@@ -1,14 +1,16 @@
 object Form1: TForm1
   Left = 402
   Top = 160
+  Width = 452
+  Height = 448
   VertScrollBar.Smooth = True
   VertScrollBar.Style = ssHotTrack
   VertScrollBar.Tracking = True
+  AutoScroll = True
+  AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
   BorderWidth = 30
   Caption = 'SPR - Sistema de pedidos y reportes'
-  ClientHeight = 403
-  ClientWidth = 412
   Color = clWindowText
   TransparentColorValue = clSilver
   Font.Charset = DEFAULT_CHARSET
@@ -1217,14 +1219,5 @@ object Form1: TForm1
       ParentFont = False
       OnClick = SpeedButton2Click
     end
-  end
-  object Button1: TButton
-    Left = 277
-    Top = 64
-    Width = 75
-    Height = 25
-    Caption = 'Button1'
-    TabOrder = 2
-    OnClick = Button1Click
   end
 end
