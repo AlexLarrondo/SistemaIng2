@@ -1,10 +1,11 @@
 object Form11: TForm11
   Left = 0
   Top = 0
+  ActiveControl = Edit2
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Generar Pedido'
-  ClientHeight = 367
-  ClientWidth = 589
+  ClientHeight = 459
+  ClientWidth = 775
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -751,13 +752,15 @@ object Form11: TForm11
     0000F00F0000}
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnActivate = FormActivate
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
-    Left = 0
-    Top = 0
-    Width = 593
-    Height = 369
+    Left = -18
+    Top = 2
+    Width = 777
+    Height = 471
     Color = cl3DDkShadow
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlue
@@ -768,21 +771,21 @@ object Form11: TForm11
     ParentColor = False
     ParentFont = False
     TabOrder = 0
-    object ListBox1: TListBox
-      Left = 400
-      Top = 80
-      Width = 169
-      Height = 273
-      Columns = 3
-      DoubleBuffered = True
-      ItemHeight = 22
-      Items.Strings = (
-        '')
-      ParentDoubleBuffered = False
-      TabOrder = 0
+    object Label1: TLabel
+      Left = 536
+      Top = 362
+      Width = 105
+      Height = 22
+      Caption = 'Precio total'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -19
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object Panel2: TPanel
-      Left = 300
+      Left = 324
       Top = 185
       Width = 87
       Height = 45
@@ -794,7 +797,7 @@ object Form11: TForm11
       Color = clWhite
       ParentBackground = False
       ShowCaption = False
-      TabOrder = 1
+      TabOrder = 3
       object SpeedButton2: TSpeedButton
         AlignWithMargins = True
         Left = 6
@@ -814,6 +817,7 @@ object Form11: TForm11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = SpeedButton2Click
       end
     end
     object Edit1: TEdit
@@ -826,10 +830,11 @@ object Form11: TForm11
     end
     object Edit2: TEdit
       Left = 80
-      Top = 32
-      Width = 193
+      Top = 52
+      Width = 201
       Height = 30
-      TabOrder = 3
+      TabOrder = 0
+      OnChange = Edit2Change
     end
     object DBGrid1: TDBGrid
       AlignWithMargins = True
@@ -838,7 +843,47 @@ object Form11: TForm11
       Width = 225
       Height = 265
       Color = cl3DDkShadow
-      DataSource = DM.DataSource3
+      DataSource = DM.DataSource4
+      FixedColor = clWhite
+      GradientEndColor = clMaroon
+      GradientStartColor = clMaroon
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 1
+      TitleFont.Charset = ANSI_CHARSET
+      TitleFont.Color = clMaroon
+      TitleFont.Height = -12
+      TitleFont.Name = 'Arial'
+      TitleFont.Style = [fsBold]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'Nombre'
+          Width = 102
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Precio venta'
+          Title.Caption = 'Precio '
+          Width = 100
+          Visible = True
+        end>
+    end
+    object DBGrid2: TDBGrid
+      AlignWithMargins = True
+      Left = 427
+      Top = 85
+      Width = 326
+      Height = 268
+      Color = cl3DDkShadow
+      DataSource = DM.DS_PPPP
       FixedColor = clWhite
       GradientEndColor = clMaroon
       GradientStartColor = clMaroon
@@ -859,17 +904,111 @@ object Form11: TForm11
       Columns = <
         item
           Expanded = False
-          FieldName = 'Nombre'
+          FieldName = 'Cantidad'
+          Width = 91
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'NombreProd'
+          Title.Caption = 'Producto'
           Width = 102
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'Precio venta'
-          Title.Caption = 'Precio '
-          Width = 100
+          FieldName = 'Precio'
+          Width = 94
+          Visible = True
+        end
+        item
+          Expanded = False
+          PickList.Strings = (
+            'x')
+          Width = 20
           Visible = True
         end>
+    end
+    object Edit3: TEdit
+      Left = 664
+      Top = 359
+      Width = 89
+      Height = 30
+      Enabled = False
+      ReadOnly = True
+      TabOrder = 6
+    end
+    object Panel1: TPanel
+      Left = 384
+      Top = 395
+      Width = 135
+      Height = 45
+      AutoSize = True
+      BevelInner = bvLowered
+      BevelOuter = bvLowered
+      BevelWidth = 3
+      Caption = 'Panel1'
+      Color = clWhite
+      ParentBackground = False
+      ShowCaption = False
+      TabOrder = 5
+      object SpeedButton1: TSpeedButton
+        AlignWithMargins = True
+        Left = 6
+        Top = 6
+        Width = 123
+        Height = 33
+        Cursor = crHandPoint
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Caption = 'Generar Pedido'
+        Flat = True
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        OnClick = SpeedButton1Click
+      end
+    end
+    object Panel3: TPanel
+      Left = 243
+      Top = 395
+      Width = 135
+      Height = 45
+      AutoSize = True
+      BevelInner = bvLowered
+      BevelOuter = bvLowered
+      BevelWidth = 3
+      Caption = 'Panel1'
+      Color = clWhite
+      ParentBackground = False
+      ShowCaption = False
+      TabOrder = 7
+      object SpeedButton3: TSpeedButton
+        AlignWithMargins = True
+        Left = 6
+        Top = 6
+        Width = 123
+        Height = 33
+        Cursor = crHandPoint
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Caption = 'Salir'
+        Flat = True
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        OnClick = SpeedButton3Click
+      end
     end
   end
 end

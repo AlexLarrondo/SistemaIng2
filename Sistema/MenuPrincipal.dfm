@@ -1606,6 +1606,7 @@ object Form4: TForm4
       Caption = 'P&edidos'
       object GenerarPedido1: TMenuItem
         Caption = 'Generar Pedido'
+        OnClick = GenerarPedido1Click
       end
       object Anulartickets1: TMenuItem
         Caption = 'Anular tickets'

@@ -1,8 +1,8 @@
 object Form10: TForm10
   Left = 0
   Top = 0
-  Width = 552
-  Height = 372
+  Width = 562
+  Height = 383
   AutoScroll = True
   AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
@@ -758,7 +758,7 @@ object Form10: TForm10
   TextHeight = 13
   object DBGrid1: TDBGrid
     AlignWithMargins = True
-    Left = 3
+    Left = 5
     Top = 3
     Width = 538
     Height = 339
@@ -784,7 +784,7 @@ object Form10: TForm10
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 0
+    Top = 6
     Width = 538
     Height = 339
     Color = cl3DDkShadow

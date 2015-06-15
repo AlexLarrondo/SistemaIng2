@@ -52,6 +52,7 @@ begin
   DM.EventosActivos.Close;
   DM.EventosActivos.Parameters.ParamByName('Fecha1').Value:= Datetostr(Now);
   DM.EventosActivos.Parameters.ParamByName('Fecha2').Value:= Datetostr(Now);
+  DM.EventosActivos.Parameters.ParamByName('Nombre').Value:= '<Elije un evento>';
   DM.EventosActivos.Open;
   DBGRID1.Columns[0].Width:=220;
   DBGRID1.Columns[1].Width:=140;
@@ -87,10 +88,11 @@ var
   Nombre: string;
 begin
   Nombre:=DM.EventosActivos.FieldByName('Nombre').AsString;
- { DM.EventosFechaYFecha.Close;
-  DM.EventosFechaYFecha.Parameters.ParamByName('Fecha1').Value:= Datetostr(DateTimePicker2.Date);
-  DM.EventosFechaYFecha.Parameters.ParamByName('Fecha2').Value:= Datetostr(DateTimePicker1.Date);
-  DM.EventosFechaYFecha.Open;}
+  {DM.EvitarSuperponer.Close;
+  DM.EvitarSuperponer.Parameters.ParamByName('FechaFin1').Value:= (DateTimePicker1.Date);
+  DM.EvitarSuperponer.Parameters.ParamByName('FechaFin2').Value:= (DateTimePicker1.Date);
+  DM.EvitarSuperponer.SQL;
+  DM.EvitarSuperponer.Open; }
   If Edit1.Text='' then
      MessageDlg('Falta ingresar el nombre del evento',mterror,[mbOk],0)
      else

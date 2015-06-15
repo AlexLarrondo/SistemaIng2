@@ -60,6 +60,7 @@ begin
   DM.EventosActivos.Close;
   DM.EventosActivos.Parameters.ParamByName('Fecha1').Value:= Datetostr(DateTimePicker2.Date);
   DM.EventosActivos.Parameters.ParamByName('Fecha2').Value:= Datetostr(DateTimePicker1.Date);
+  DM.EventosActivos.Parameters.ParamByName('Nombre').Value:= '<Elije un evento>';
   DM.EventosActivos.Open;
   If Edit1.Text='' then
      MessageDlg('Falta ingresar el nombre del evento',mterror,[mbOk],0)

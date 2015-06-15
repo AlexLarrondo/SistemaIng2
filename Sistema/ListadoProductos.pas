@@ -157,7 +157,6 @@ end;
 procedure TForm8.SpeedButton1Click(Sender: TObject);
 {Cancela la modificación}
 begin
-  DM.Productos.Cancel;
   GroupBox1.Visible:=false;
   DbGrid1.Enabled:=true;
   Panel3.Visible:=true;

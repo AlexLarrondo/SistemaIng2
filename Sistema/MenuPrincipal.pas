@@ -6,7 +6,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, StdCtrls, ExtCtrls, jpeg, ListadoUsuarios, Bases, AltaProducto,
-  ListadoProductos, AltaEvento, ListadoEventosActivos;
+  ListadoProductos, AltaEvento, ListadoEventosActivos, GenerarPedido;
 
 type
   TForm4 = class(TForm)
@@ -38,6 +38,7 @@ type
     procedure ListarProductos1Click(Sender: TObject);
     procedure Dardealtaunevento1Click(Sender: TObject);
     procedure Listareventosactivos1Click(Sender: TObject);
+    procedure GenerarPedido1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -80,6 +81,16 @@ begin
       Eventos1.Enabled:=true
     end;
 
+end;
+
+procedure TForm4.GenerarPedido1Click(Sender: TObject);
+begin
+  {DM.Pedidos.Append;
+  DM.Pedidos.FieldByName('Fecha').AsDateTime:=Now;
+  DM.Pedidos.Post; }
+  Form11.showModal;
+  if form11.ModalResult = mrCancel then
+   DM.Pedidos.Delete
 end;
 
 procedure TForm4.Listareventosactivos1Click(Sender: TObject);

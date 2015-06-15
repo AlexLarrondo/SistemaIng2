@@ -56,7 +56,25 @@ type
     EventosNombre: TWideStringField;
     EventosFecha_Inicio: TDateTimeField;
     DS_EventosActivos: TDataSource;
-    EventosFechaYFecha: TADOQuery;
+    EvitarSuperponer: TADOQuery;
+    ProductoPedido: TADOTable;
+    DS_ProductoPedido: TDataSource;
+    Pedidos: TADOTable;
+    PedidosId: TAutoIncField;
+    PedidosFecha: TDateTimeField;
+    PedidosPrecio_Total: TBCDField;
+    PedidosDNI: TIntegerField;
+    PedidosEvento: TWideStringField;
+    ProductoPedidoId: TAutoIncField;
+    ProductoPedidoCantidad: TIntegerField;
+    ProductoPedidoPrecio: TBCDField;
+    ProductoPedidoNombreProd: TWideStringField;
+    ProdPedidoParaPedido: TADOQuery;
+    DS_PPPP: TDataSource;
+    ProdPedidoParaPedidoId: TIntegerField;
+    ProdPedidoParaPedidoCantidad: TIntegerField;
+    ProdPedidoParaPedidoPrecio: TBCDField;
+    ProdPedidoParaPedidoNombreProd: TWideStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

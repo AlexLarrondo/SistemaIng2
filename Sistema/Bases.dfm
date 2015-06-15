@@ -6,9 +6,8 @@ object DM: TDM
   object ADOConnection1: TADOConnection
     Connected = True
     ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Se' +
-      'ttings\Alex\Escritorio\Sistema\BaseDeDatos.mdb;Persist Security ' +
-      'Info=False'
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Horacio\De' +
+      'sktop\Sistema\BaseDeDatos.mdb;Persist Security Info=False'
     KeepConnection = False
     LoginPrompt = False
     Mode = cmShareDenyNone
@@ -55,6 +54,7 @@ object DM: TDM
     Top = 8
   end
   object ADOQuery1: TADOQuery
+    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <
@@ -199,7 +199,7 @@ object DM: TDM
       'SELECT *'
       'FROM Productos P'
       'WHERE P.Estado='#39'Activo'#39
-      '')
+      'ORDER BY P.Nombre')
     Left = 144
     Top = 240
     object ProductosActivosNombre: TWideStringField
@@ -257,6 +257,7 @@ object DM: TDM
     end
   end
   object EventosActivos: TADOQuery
+    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <
@@ -277,13 +278,22 @@ object DM: TDM
         Precision = 255
         Size = 510
         Value = Null
+      end
+      item
+        Name = 'Nombre'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
       end>
     SQL.Strings = (
       'SELECT *'
       'FROM Eventos'
       
         'WHERE (:Fecha1 >= Fecha_Inicio) and (:Fecha2 <= Fecha_Final) and' +
-        ' (Nombre <> '#39'<Elije una opcion>'#39')'
+        ' (Nombre <> :Nombre)'
       'ORDER BY Fecha_Inicio')
     Left = 304
     Top = 64
@@ -298,11 +308,22 @@ object DM: TDM
     Left = 392
     Top = 64
   end
-  object EventosFechaYFecha: TADOQuery
+  object EvitarSuperponer: TADOQuery
+    Active = True
     Connection = ADOConnection1
+    CursorType = ctStatic
     Parameters = <
       item
-        Name = 'Fecha2'
+        Name = 'FechaFin1'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end
+      item
+        Name = 'FechaFin2'
         Attributes = [paNullable]
         DataType = ftWideString
         NumericScale = 255
@@ -314,10 +335,105 @@ object DM: TDM
       'SELECT *'
       'FROM Eventos'
       
-        'WHERE  ( :Fecha2 <= Fecha_Final) and (Nombre <> '#39'<Elije una opci' +
-        'on>'#39')'
-      'ORDER BY Fecha_Inicio')
-    Left = 496
+        'WHERE (:FechaFin1 >= Fecha_Inicio) and (:FechaFin2 <= Fecha_Fina' +
+        'l)')
+    Left = 488
     Top = 64
+  end
+  object ProductoPedido: TADOTable
+    Active = True
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    TableName = 'ProductoPedido'
+    Left = 312
+    Top = 128
+    object ProductoPedidoId: TAutoIncField
+      FieldName = 'Id'
+      ReadOnly = True
+    end
+    object ProductoPedidoCantidad: TIntegerField
+      FieldName = 'Cantidad'
+    end
+    object ProductoPedidoPrecio: TBCDField
+      FieldName = 'Precio'
+      DisplayFormat = '$ 00,00'
+      Precision = 19
+    end
+    object ProductoPedidoNombreProd: TWideStringField
+      FieldName = 'NombreProd'
+      Size = 255
+    end
+  end
+  object DS_ProductoPedido: TDataSource
+    DataSet = ProductoPedido
+    Left = 392
+    Top = 128
+  end
+  object Pedidos: TADOTable
+    Active = True
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    TableName = 'Pedidos'
+    Left = 320
+    Top = 240
+    object PedidosId: TAutoIncField
+      FieldName = 'Id'
+      ReadOnly = True
+    end
+    object PedidosFecha: TDateTimeField
+      FieldName = 'Fecha'
+    end
+    object PedidosPrecio_Total: TBCDField
+      FieldName = 'Precio_Total'
+      DisplayFormat = '$ 00,00'
+      Precision = 19
+    end
+    object PedidosDNI: TIntegerField
+      FieldName = 'DNI'
+    end
+    object PedidosEvento: TWideStringField
+      FieldName = 'Evento'
+      Size = 255
+    end
+  end
+  object ProdPedidoParaPedido: TADOQuery
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'Num'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT *'
+      'FROM ProductoPedido'
+      'WHERE  :Num = Id')
+    Left = 320
+    Top = 184
+    object ProdPedidoParaPedidoId: TIntegerField
+      FieldName = 'Id'
+    end
+    object ProdPedidoParaPedidoCantidad: TIntegerField
+      FieldName = 'Cantidad'
+    end
+    object ProdPedidoParaPedidoPrecio: TBCDField
+      FieldName = 'Precio'
+      DisplayFormat = '$ 00.00'
+      Precision = 19
+    end
+    object ProdPedidoParaPedidoNombreProd: TWideStringField
+      FieldName = 'NombreProd'
+      Size = 255
+    end
+  end
+  object DS_PPPP: TDataSource
+    DataSet = ProdPedidoParaPedido
+    Left = 416
+    Top = 184
   end
 end
