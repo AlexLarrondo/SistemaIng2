@@ -80,6 +80,9 @@
 			<DCCReference Include="GenerarPedido.pas">
 				<Form>Form11</Form>
 			</DCCReference>
+			<DCCReference Include="Ticket.pas">
+				<Form>Form12</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

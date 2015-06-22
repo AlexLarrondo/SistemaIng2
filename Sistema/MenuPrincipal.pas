@@ -16,12 +16,9 @@ type
     ListarProductos1: TMenuItem;
     Pedidos2: TMenuItem;
     GenerarPedido1: TMenuItem;
-    Anulartickets1: TMenuItem;
     Salir1: TMenuItem;
     Usuarios1: TMenuItem;
     Dardealtaproducto1: TMenuItem;
-    Listarpedidos1: TMenuItem;
-    Modificarunpedido1: TMenuItem;
     Reportes1: TMenuItem;
     Generarreportediario1: TMenuItem;
     Informaciondelprograma1: TMenuItem;
@@ -67,19 +64,30 @@ end;
 
 procedure TForm4.FormActivate(Sender: TObject);
 begin
- evento:=form3.dblookupcombobox1.keyvalue;
- Nombre:= DM.ADOQuery1.FieldByName('Nombre').AsString;
- Apellido:= DM.ADOQuery1.FieldByName('Apellido').AsString;
- Tipo:= DM.ADOQuery1.FieldByName('Tipo').AsString;
- Form4.Caption:= 'SPR - Sistema de pedidos y reportes / Usuario: '+Nombre+' '+Apellido +' Evento: '+ evento ;
- if Tipo = 'Usuario común' then begin
+
+  Nombre:= DM.ADOQuery1.FieldByName('Nombre').AsString;
+  Apellido:= DM.ADOQuery1.FieldByName('Apellido').AsString;
+  if not (form3.dblookupcombobox1.keyvalue = Null) then
+     evento:=form3.dblookupcombobox1.keyvalue;
+  Tipo:= DM.ADOQuery1.FieldByName('Tipo').AsString;
+  Form4.Caption:= 'SPR - Sistema de pedidos y reportes / Usuario: '+Nombre+' '+Apellido + ' / Evento: ' + evento;
+  if Tipo = 'Usuario común' then begin
     Dardealtaproducto1.Enabled:=false;
     Eventos1.Enabled:=false
-  end
+    end
     else begin
       Dardealtaproducto1.Enabled:=true;
       Eventos1.Enabled:=true
-    end;
+      end;
+
+ if evento = '<Elije un evento>' then begin
+    GenerarPedido1.Enabled:=false;
+
+    end
+    else begin
+      GenerarPedido1.Enabled:=true;
+
+     end;
 
 end;
 
@@ -90,7 +98,7 @@ begin
   DM.Pedidos.Post; }
   Form11.showModal;
   if form11.ModalResult = mrCancel then
-   DM.Pedidos.Delete
+    DM.Pedidos.Delete
 end;
 
 procedure TForm4.Listareventosactivos1Click(Sender: TObject);

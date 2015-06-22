@@ -23,11 +23,13 @@ type
     SpeedButton1: TSpeedButton;
     GroupBox5: TGroupBox;
     DateTimePicker2: TDateTimePicker;
+    Label5: TLabel;
     procedure FormActivate(Sender: TObject);
     procedure ModificarEvento1Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure DateTimePicker2Change(Sender: TObject);
+    procedure BorrarEvento1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,7 +41,51 @@ var
 
 implementation
 
+uses MenuPrincipal;
+
 {$R *.dfm}
+
+procedure TForm10.BorrarEvento1Click(Sender: TObject);
+begin
+  DM.BorrarEventos.Close;
+  DM.BorrarEventos.Parameters.ParamByName('Evento').Value:=DM.EventosActivos.FieldByName('Nombre').AsString;
+  DM.BorrarEventos.Open;
+  if NOT  DM.BorrarEventos.IsEmpty then BEGIN
+      if MessageDlg('Este evento tiene generado pedidos, ¿Desea eliminarlo?',mtWarning,[mbYes,mbNo],0) = mrYes then
+        if MessageDlg('¿Está seguro? (Perderá información valiosa)',mtWarning,[mbYes,mbNo],0) = mrYes then begin
+          DM.BorrarEventos.First;
+          while not DM.BorrarEventos.IsEmpty do  begin
+             DM.ProdPedidoParaPedido.Close;
+             DM.ProdPedidoParaPedido.Parameters.ParamByName('Num').Value:= DM.BorrarEventos.FieldByName('Id').AsString;
+             DM.ProdPedidoParaPedido.Open;
+             DM.ProdPedidoParaPedido.First;
+             while not DM.ProdPedidoParaPedido.isEmpty do begin
+                DM.ProdPedidoParaPedido.Delete;
+
+             end;
+             DM.BorrarEventos.Delete;
+          end;
+          if DM.EventosActivos.FieldByName('Nombre').AsString = evento then begin
+             MessageDlg('El evento a borrar es el mimso en el que usted ha iniciado sesión, por lo que tendra que volver a iniciar para otro evento',mtInformation,[mbOk],0);
+             DM.EventosActivos.Delete;
+             Close;
+             form4.Close;
+          end
+          else
+             DM.EventosActivos.Delete;
+        end;
+  END
+  else
+      if DM.EventosActivos.FieldByName('Nombre').AsString = evento then begin
+             MessageDlg('El evento a borrar es el mismo en el que usted ha iniciado sesión, por lo que tendra que volver a iniciar para otro evento',mtInformation,[mbOk],0);
+             DM.EventosActivos.Delete;
+             Close;
+             form4.Salir1click(sender)
+          end
+          else
+            if MessageDlg('¿Desea eliminar el evento?',mtWarning,[mbYes,mbNo],0) = mrYes then
+              DM.EventosActivos.Delete;
+end;
 
 procedure TForm10.DateTimePicker2Change(Sender: TObject);
 begin

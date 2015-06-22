@@ -1,13 +1,21 @@
 object DM: TDM
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 334
-  Width = 591
+  Height = 457
+  Width = 641
   object ADOConnection1: TADOConnection
     Connected = True
     ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Horacio\De' +
-      'sktop\Sistema\BaseDeDatos.mdb;Persist Security Info=False'
+      'Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=BaseD' +
+      'eDatos.mdb;Mode=Share Deny None;Extended Properties="";Persist S' +
+      'ecurity Info=False;Jet OLEDB:System database="";Jet OLEDB:Regist' +
+      'ry Path="";Jet OLEDB:Database Password="";Jet OLEDB:Engine Type=' +
+      '5;Jet OLEDB:Database Locking Mode=1;Jet OLEDB:Global Partial Bul' +
+      'k Ops=2;Jet OLEDB:Global Bulk Transactions=1;Jet OLEDB:New Datab' +
+      'ase Password="";Jet OLEDB:Create System Database=False;Jet OLEDB' +
+      ':Encrypt Database=False;Jet OLEDB:Don'#39't Copy Locale on Compact=F' +
+      'alse;Jet OLEDB:Compact Without Replica Repair=False;Jet OLEDB:SF' +
+      'P=False'
     KeepConnection = False
     LoginPrompt = False
     Mode = cmShareDenyNone
@@ -243,8 +251,8 @@ object DM: TDM
     Connection = ADOConnection1
     CursorType = ctStatic
     TableName = 'Eventos'
-    Left = 304
-    Top = 8
+    Left = 384
+    Top = 16
     object EventosNombre: TWideStringField
       FieldName = 'Nombre'
       Size = 255
@@ -295,21 +303,20 @@ object DM: TDM
         'WHERE (:Fecha1 >= Fecha_Inicio) and (:Fecha2 <= Fecha_Final) and' +
         ' (Nombre <> :Nombre)'
       'ORDER BY Fecha_Inicio')
-    Left = 304
-    Top = 64
+    Left = 384
+    Top = 72
   end
   object DataSource6: TDataSource
     DataSet = Eventos
-    Left = 368
-    Top = 8
+    Left = 448
+    Top = 16
   end
   object DS_EventosActivos: TDataSource
     DataSet = EventosActivos
-    Left = 392
-    Top = 64
+    Left = 448
+    Top = 72
   end
   object EvitarSuperponer: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <
@@ -337,7 +344,7 @@ object DM: TDM
       
         'WHERE (:FechaFin1 >= Fecha_Inicio) and (:FechaFin2 <= Fecha_Fina' +
         'l)')
-    Left = 488
+    Left = 544
     Top = 64
   end
   object ProductoPedido: TADOTable
@@ -345,8 +352,8 @@ object DM: TDM
     Connection = ADOConnection1
     CursorType = ctStatic
     TableName = 'ProductoPedido'
-    Left = 312
-    Top = 128
+    Left = 384
+    Top = 120
     object ProductoPedidoId: TAutoIncField
       FieldName = 'Id'
       ReadOnly = True
@@ -366,7 +373,7 @@ object DM: TDM
   end
   object DS_ProductoPedido: TDataSource
     DataSet = ProductoPedido
-    Left = 392
+    Left = 448
     Top = 128
   end
   object Pedidos: TADOTable
@@ -374,7 +381,7 @@ object DM: TDM
     Connection = ADOConnection1
     CursorType = ctStatic
     TableName = 'Pedidos'
-    Left = 320
+    Left = 368
     Top = 240
     object PedidosId: TAutoIncField
       FieldName = 'Id'
@@ -397,6 +404,7 @@ object DM: TDM
     end
   end
   object ProdPedidoParaPedido: TADOQuery
+    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <
@@ -413,7 +421,7 @@ object DM: TDM
       'SELECT *'
       'FROM ProductoPedido'
       'WHERE  :Num = Id')
-    Left = 320
+    Left = 368
     Top = 184
     object ProdPedidoParaPedidoId: TIntegerField
       FieldName = 'Id'
@@ -433,7 +441,47 @@ object DM: TDM
   end
   object DS_PPPP: TDataSource
     DataSet = ProdPedidoParaPedido
-    Left = 416
+    Left = 448
     Top = 184
+  end
+  object BorrarEventos: TADOQuery
+    Active = True
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'Evento'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT *'
+      'FROM Pedidos P'
+      'WHERE (:Evento = P.Evento) ')
+    Left = 136
+    Top = 320
+  end
+  object Tciket: TADOQuery
+    Active = True
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      
+        'SELECT P.Precio_Total, P.Evento, M.Cantidad, M.NombreProd, M.Pre' +
+        'cio'
+      'FROM Pedidos P INNER JOIN ProductoPedido M ON M.Id = P.Id'
+      'ORDER BY M.NombreProd')
+    Left = 368
+    Top = 312
+  end
+  object DS_Ticket: TDataSource
+    DataSet = Tciket
+    Left = 440
+    Top = 312
   end
 end

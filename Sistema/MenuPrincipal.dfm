@@ -1,6 +1,6 @@
 object Form4: TForm4
-  Left = 0
-  Top = 0
+  Left = 293
+  Top = 165
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'SPR - Sistema de pedidos y reportes'
   ClientHeight = 413
@@ -1607,15 +1607,6 @@ object Form4: TForm4
       object GenerarPedido1: TMenuItem
         Caption = 'Generar Pedido'
         OnClick = GenerarPedido1Click
-      end
-      object Anulartickets1: TMenuItem
-        Caption = 'Anular tickets'
-      end
-      object Listarpedidos1: TMenuItem
-        Caption = 'Listar pedidos'
-      end
-      object Modificarunpedido1: TMenuItem
-        Caption = 'Modificar un pedido'
       end
     end
     object Reportes1: TMenuItem

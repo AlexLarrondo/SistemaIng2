@@ -106,8 +106,9 @@ begin
                   Evento:=dblookupcombobox1.keyvalue;
                   MessageDlg ('¡Bienvenido '+DM.ADOQuery1.Fields[1].AsString+' '
                   +DM.ADOQuery1.Fields[2].AsString+'!',mtinformation,[mbOk],0);
+                  Form4.ShowModal;
                   Close;
-                  Form4.Show;
+
                 end;
             end;
 end;

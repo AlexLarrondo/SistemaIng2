@@ -75,6 +75,9 @@ type
     ProdPedidoParaPedidoCantidad: TIntegerField;
     ProdPedidoParaPedidoPrecio: TBCDField;
     ProdPedidoParaPedidoNombreProd: TWideStringField;
+    BorrarEventos: TADOQuery;
+    Tciket: TADOQuery;
+    DS_Ticket: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

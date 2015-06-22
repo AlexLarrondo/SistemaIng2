@@ -1,12 +1,10 @@
 object Form10: TForm10
   Left = 0
   Top = 0
-  Width = 562
-  Height = 383
-  AutoScroll = True
-  AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Eventos Activos'
+  ClientHeight = 373
+  ClientWidth = 546
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -784,9 +782,9 @@ object Form10: TForm10
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 6
-    Width = 538
-    Height = 339
+    Top = 0
+    Width = 543
+    Height = 417
     Color = cl3DDkShadow
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlue
@@ -797,6 +795,19 @@ object Form10: TForm10
     ParentColor = False
     ParentFont = False
     TabOrder = 1
+    object Label5: TLabel
+      Left = 35
+      Top = 268
+      Width = 124
+      Height = 16
+      Caption = '*Campos obligatorios'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
     object GroupBox2: TGroupBox
       Left = 137
       Top = 24
@@ -820,7 +831,7 @@ object Form10: TForm10
       end
     end
     object GroupBox3: TGroupBox
-      Left = 296
+      Left = 320
       Top = 136
       Width = 165
       Height = 98
@@ -849,8 +860,8 @@ object Form10: TForm10
       end
     end
     object Panel2: TPanel
-      Left = 135
-      Top = 258
+      Left = 137
+      Top = 306
       Width = 111
       Height = 50
       AutoSize = True
@@ -885,8 +896,8 @@ object Form10: TForm10
       end
     end
     object Panel1: TPanel
-      Left = 316
-      Top = 258
+      Left = 299
+      Top = 306
       Width = 111
       Height = 50
       AutoSize = True
@@ -921,7 +932,7 @@ object Form10: TForm10
       end
     end
     object GroupBox5: TGroupBox
-      Left = 84
+      Left = 68
       Top = 136
       Width = 165
       Height = 98
@@ -960,6 +971,7 @@ object Form10: TForm10
     end
     object BorrarEvento1: TMenuItem
       Caption = 'Borrar Evento'
+      OnClick = BorrarEvento1Click
     end
   end
 end

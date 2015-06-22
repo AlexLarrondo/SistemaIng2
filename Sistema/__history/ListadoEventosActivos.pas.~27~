@@ -1,0 +1,143 @@
+unit ListadoEventosActivos;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Bases, Grids, DBGrids, Menus, Buttons, ExtCtrls, ComCtrls, StdCtrls;
+
+type
+  TForm10 = class(TForm)
+    DBGrid1: TDBGrid;
+    PopupMenu1: TPopupMenu;
+    ModificarEvento1: TMenuItem;
+    BorrarEvento1: TMenuItem;
+    GroupBox1: TGroupBox;
+    GroupBox2: TGroupBox;
+    Edit1: TEdit;
+    GroupBox3: TGroupBox;
+    DateTimePicker1: TDateTimePicker;
+    Panel2: TPanel;
+    SpeedButton2: TSpeedButton;
+    Panel1: TPanel;
+    SpeedButton1: TSpeedButton;
+    GroupBox5: TGroupBox;
+    DateTimePicker2: TDateTimePicker;
+    procedure FormActivate(Sender: TObject);
+    procedure ModificarEvento1Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure DateTimePicker2Change(Sender: TObject);
+    procedure BorrarEvento1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form10: TForm10;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm10.BorrarEvento1Click(Sender: TObject);
+begin
+  DM.BorrarEventos.Close;
+  DM.BorrarEventos.Parameters.ParamByName('Evento').Value:=DM.EventosActivos.FieldByName('Nombre').AsString;
+  DM.BorrarEventos.Open;
+  if NOT  DM.BorrarEventos.IsEmpty then
+      if MessageDlg('Este evento tiene generado pedidos, ¿Desea eliminarlo?',mtWarning,[mbYes],[mbNo],0) = mrYes then
+        if MessageDlg('¿Está seguro? (Perderá información valiosa)',mtWarning,[mbYes],[mbNo],0) = mrYes then
+
+
+end;
+
+procedure TForm10.DateTimePicker2Change(Sender: TObject);
+begin
+  datetimepicker1.MinDate:=trunc(datetimepicker2.Date);
+end;
+
+procedure TForm10.FormActivate(Sender: TObject);
+begin
+  GroupBox1.Visible:=false;
+  DM.EventosActivos.Close;
+  DM.EventosActivos.Parameters.ParamByName('Fecha1').Value:= Datetostr(Now);
+  DM.EventosActivos.Parameters.ParamByName('Fecha2').Value:= Datetostr(Now);
+  DM.EventosActivos.Parameters.ParamByName('Nombre').Value:= '<Elije un evento>';
+  DM.EventosActivos.Open;
+  DBGRID1.Columns[0].Width:=220;
+  DBGRID1.Columns[1].Width:=140;
+  DBGRID1.Columns[2].Width:=140;
+  DBGRID1.Columns[1].Title.Caption:='Fecha Inicio';
+  DBGRID1.Columns[2].Title.Caption:='Fecha Fin';
+  DBGrid1.Columns[0].PopupMenu:=PopUpMenu1;
+  DBGrid1.Columns[1].PopupMenu:=PopUpMenu1;
+  DBGrid1.Columns[2].PopupMenu:=PopUpMenu1;
+end;
+
+procedure TForm10.ModificarEvento1Click(Sender: TObject);
+begin
+{Mostramos los campos para la modifiacion del evento}
+  DbGrid1.Enabled:=false;
+  GroupBox1.Visible:=true;
+  Edit1.Text:=DM.EventosActivos.FieldByName('Nombre').AsString;
+  datetimepicker1.MinDate:=trunc(DM.EventosActivos.FieldByName('Fecha_Inicio').AsDateTime);
+  datetimepicker2.MinDate:=trunc(DM.EventosActivos.FieldByName('Fecha_Inicio').AsDateTime);
+  DateTimePicker2.Date:=trunc(DM.EventosActivos.FieldByName('Fecha_Inicio').AsDateTime);
+  DateTimePicker1.Date:=trunc(DM.EventosActivos.FieldByName('Fecha_Final').AsDateTime);
+ end;
+
+procedure TForm10.SpeedButton1Click(Sender: TObject);
+begin
+  DM.EventosActivos.Cancel;
+  DbGrid1.Enabled:=true;
+  FormActivate(Sender);
+end;
+
+procedure TForm10.SpeedButton2Click(Sender: TObject);
+var
+  Nombre: string;
+begin
+  Nombre:=DM.EventosActivos.FieldByName('Nombre').AsString;
+  {DM.EvitarSuperponer.Close;
+  DM.EvitarSuperponer.Parameters.ParamByName('FechaFin1').Value:= (DateTimePicker1.Date);
+  DM.EvitarSuperponer.Parameters.ParamByName('FechaFin2').Value:= (DateTimePicker1.Date);
+  DM.EvitarSuperponer.SQL;
+  DM.EvitarSuperponer.Open; }
+  If Edit1.Text='' then
+     MessageDlg('Falta ingresar el nombre del evento',mterror,[mbOk],0)
+     else
+      if (Nombre <> Edit1.Text) and (DM.EventosActivos.Locate('Nombre',Edit1.Text,[])) then begin
+        MessageDlg('Este evento ya se encuentra activo',mterror,[mbOk],0);
+        DbGrid1.Enabled:=true;
+        FormActivate(Sender);
+      end
+        else
+          If not (DM.EventosActivos.IsEmpty) then begin
+            if (MessageDlg('Existen eventos activos para el rango de fechas ingresado, ¿De todas maneras desea modificar el evento?',mtWarning,[mbYes,mbNo],0) = mrYes) then
+            begin
+              DM.EventosActivos.Edit;
+              DM.EventosActivos.FieldByName('Nombre').AsString:=Edit1.Text;
+              DM.EventosACTIVOS.FieldByName('Fecha_Inicio').AsDateTime:=Trunc(DateTimePicker2.DateTime);
+              DM.EventosActivos.FieldByName('Fecha_Final').AsDateTime:=Trunc(DateTimePicker1.DateTime);
+              DM.EventosActivos.Post;
+              MessageDlg('El evento ha sido modificado',mtInformation,[mbOk],0);
+              DbGrid1.Enabled:=true;
+              FormActivate(Sender);
+              end;
+          end
+          else begin
+            DM.EventosActivos.Edit;
+            DM.EventosActivos.FieldByName('Nombre').AsString:=Edit1.Text;
+            DM.EventosACTIVOS.FieldByName('Fecha_Inicio').AsDateTime:=Trunc(DateTimePicker2.DateTime);
+            DM.EventosActivos.FieldByName('Fecha_Final').AsDateTime:=Trunc(DateTimePicker1.DateTime);
+            DM.EventosActivos.Post;
+            MessageDlg('El evento ha sido modificado',mtInformation,[mbOk],0);
+            DbGrid1.Enabled:=true;
+            FormActivate(Sender);
+          end;
+end;
+
+end.

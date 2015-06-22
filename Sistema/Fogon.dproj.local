@@ -39,6 +39,8 @@
     <Transaction>2015/06/06 13:29:26.015.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit10.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\ListadoEventosActivos.dfm</Transaction>
     <Transaction>2015/06/06 21:33:30.281.pas,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit11.pas=C:\Documents and Settings\Alex\Escritorio\Sistema\GenerarPedido.pas</Transaction>
     <Transaction>2015/06/06 21:33:30.281.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit11.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\GenerarPedido.dfm</Transaction>
+    <Transaction>2015/06/15 17:42:28.105.pas,C:\Users\Horacio\Desktop\Sistema\Unit12.pas=C:\Users\Horacio\Desktop\Sistema\Ticket.pas</Transaction>
+    <Transaction>2015/06/15 17:42:28.105.dfm,C:\Users\Horacio\Desktop\Sistema\Unit12.dfm=C:\Users\Horacio\Desktop\Sistema\Ticket.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="Bases.pas"/>
@@ -65,5 +67,7 @@
     <File Path="ListadoEventosActivos.dfm"/>
     <File Path="GenerarPedido.pas"/>
     <File Path="GenerarPedido.dfm"/>
+    <File Path="Ticket.pas"/>
+    <File Path="Ticket.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>
