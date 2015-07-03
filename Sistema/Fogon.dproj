@@ -83,6 +83,21 @@
 			<DCCReference Include="Ticket.pas">
 				<Form>Form12</Form>
 			</DCCReference>
+			<DCCReference Include="ListadoPedidos.pas">
+				<Form>Form13</Form>
+			</DCCReference>
+			<DCCReference Include="ReporteFranjaHoraria.pas">
+				<Form>Form14</Form>
+			</DCCReference>
+			<DCCReference Include="FranjaHoraria.pas">
+				<Form>Form15</Form>
+			</DCCReference>
+			<DCCReference Include="ReportePorFechas.pas">
+				<Form>Form16</Form>
+			</DCCReference>
+			<DCCReference Include="ReporteFechas.pas">
+				<Form>Form17</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

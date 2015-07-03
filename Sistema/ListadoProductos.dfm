@@ -1,8 +1,8 @@
 object Form8: TForm8
   Left = 0
   Top = 0
-  Width = 532
-  Height = 466
+  Width = 524
+  Height = 455
   AutoScroll = True
   AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]

@@ -1,0 +1,35 @@
+unit ListadoPedidos;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Bases, Grids, DBGrids;
+
+type
+  TForm13 = class(TForm)
+    DBGrid1: TDBGrid;
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form13: TForm13;
+
+implementation
+
+uses MenuPrincipal;
+
+{$R *.dfm}
+
+procedure TForm13.FormActivate(Sender: TObject);
+begin
+  DM.Pedidos.Filtered:=false;
+  DM.Pedidos.Filter:= 'Evento = ''' + evento + '''';
+  DM.Pedidos.Filtered:=True;
+end;
+
+end.

@@ -1,0 +1,35 @@
+unit FranjaHoraria;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Buttons, ExtCtrls, ComCtrls, StdCtrls;
+
+type
+  TForm15 = class(TForm)
+    GroupBox1: TGroupBox;
+    GroupBox3: TGroupBox;
+    DateTimePicker1: TDateTimePicker;
+    Panel2: TPanel;
+    SpeedButton2: TSpeedButton;
+    Panel1: TPanel;
+    SpeedButton1: TSpeedButton;
+    GroupBox5: TGroupBox;
+    DateTimePicker2: TDateTimePicker;
+    GroupBox2: TGroupBox;
+    DateTimePicker3: TDateTimePicker;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form15: TForm15;
+
+implementation
+
+{$R *.dfm}
+
+end.

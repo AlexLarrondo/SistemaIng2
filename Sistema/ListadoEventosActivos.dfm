@@ -938,7 +938,7 @@ object Form10: TForm10
       Height = 98
       Caption = '*Fecha inicio'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clMaroon
+      Font.Color = clLime
       Font.Height = -16
       Font.Name = 'Arial'
       Font.Style = [fsBold]

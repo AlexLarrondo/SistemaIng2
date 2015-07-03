@@ -76,6 +76,7 @@ begin
   generePedido:=false;
   DM.Pedidos.Append;
   DM.Pedidos.FieldByName('Fecha').AsDateTime:=Now;
+  DM.Pedidos.FieldByName('Estado').AsString:= 'Facturado';
   DM.Pedidos.Post;
   DM.ProdPedidoParaPedido.Close;
   DM.ProdPedidoParaPedido.Parameters.ParamByName('Num').Value:= DM.Pedidos.FieldByName('Id').AsString;

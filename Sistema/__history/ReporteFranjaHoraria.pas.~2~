@@ -1,0 +1,25 @@
+unit ReporteFranjaHoraria;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, QuickRpt;
+
+type
+  TForm14 = class(TForm)
+    QuickRep1: TQuickRep;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form14: TForm14;
+
+implementation
+
+{$R *.dfm}
+
+end.

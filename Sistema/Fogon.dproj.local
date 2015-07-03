@@ -41,6 +41,16 @@
     <Transaction>2015/06/06 21:33:30.281.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit11.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\GenerarPedido.dfm</Transaction>
     <Transaction>2015/06/15 17:42:28.105.pas,C:\Users\Horacio\Desktop\Sistema\Unit12.pas=C:\Users\Horacio\Desktop\Sistema\Ticket.pas</Transaction>
     <Transaction>2015/06/15 17:42:28.105.dfm,C:\Users\Horacio\Desktop\Sistema\Unit12.dfm=C:\Users\Horacio\Desktop\Sistema\Ticket.dfm</Transaction>
+    <Transaction>2015/06/25 10:53:19.844.pas,J:\Sistema\Unit13.pas=J:\Sistema\ListadoPedidos.pas</Transaction>
+    <Transaction>2015/06/25 10:53:19.844.dfm,J:\Sistema\Unit13.dfm=J:\Sistema\ListadoPedidos.dfm</Transaction>
+    <Transaction>2015/06/25 16:08:54.156.pas,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit14.pas=C:\Documents and Settings\Alex\Escritorio\Sistema\ReporteFranjaHoraria.pas</Transaction>
+    <Transaction>2015/06/25 16:08:54.156.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit14.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\ReporteFranjaHoraria.dfm</Transaction>
+    <Transaction>2015/06/25 16:12:04.640.pas,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit15.pas=C:\Documents and Settings\Alex\Escritorio\Sistema\FranjaHoraria.pas</Transaction>
+    <Transaction>2015/06/25 16:12:04.640.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit15.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\FranjaHoraria.dfm</Transaction>
+    <Transaction>2015/06/25 20:32:46.281.pas,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit16.pas=C:\Documents and Settings\Alex\Escritorio\Sistema\ReportePorFechas.pas</Transaction>
+    <Transaction>2015/06/25 20:32:46.281.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit16.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\ReportePorFechas.dfm</Transaction>
+    <Transaction>2015/06/25 20:38:06.250.pas,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit17.pas=C:\Documents and Settings\Alex\Escritorio\Sistema\ReporteFechas.pas</Transaction>
+    <Transaction>2015/06/25 20:38:06.250.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit17.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\ReporteFechas.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="Bases.pas"/>
@@ -69,5 +79,15 @@
     <File Path="GenerarPedido.dfm"/>
     <File Path="Ticket.pas"/>
     <File Path="Ticket.dfm"/>
+    <File Path="ListadoPedidos.pas"/>
+    <File Path="ListadoPedidos.dfm"/>
+    <File Path="ReporteFranjaHoraria.pas"/>
+    <File Path="ReporteFranjaHoraria.dfm"/>
+    <File Path="FranjaHoraria.pas"/>
+    <File Path="FranjaHoraria.dfm"/>
+    <File Path="ReportePorFechas.pas"/>
+    <File Path="ReportePorFechas.dfm"/>
+    <File Path="ReporteFechas.pas"/>
+    <File Path="ReporteFechas.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

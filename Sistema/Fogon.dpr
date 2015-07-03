@@ -14,7 +14,12 @@ uses
   AltaEvento in 'AltaEvento.pas' {Form9},
   ListadoEventosActivos in 'ListadoEventosActivos.pas' {Form10},
   GenerarPedido in 'GenerarPedido.pas' {Form11},
-  Ticket in 'Ticket.pas' {Form12};
+  Ticket in 'Ticket.pas' {Form12},
+  ListadoPedidos in 'ListadoPedidos.pas' {Form13},
+  ReporteFranjaHoraria in 'ReporteFranjaHoraria.pas' {Form14},
+  FranjaHoraria in 'FranjaHoraria.pas' {Form15},
+  ReportePorFechas in 'ReportePorFechas.pas' {Form16},
+  ReporteFechas in 'ReporteFechas.pas' {Form17};
 
 {$R *.res}
 
@@ -34,5 +39,10 @@ begin
   Application.CreateForm(TForm10, Form10);
   Application.CreateForm(TForm11, Form11);
   Application.CreateForm(TForm12, Form12);
+  Application.CreateForm(TForm13, Form13);
+  Application.CreateForm(TForm14, Form14);
+  Application.CreateForm(TForm15, Form15);
+  Application.CreateForm(TForm16, Form16);
+  Application.CreateForm(TForm17, Form17);
   Application.Run;
 end.

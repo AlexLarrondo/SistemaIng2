@@ -78,6 +78,12 @@ type
     BorrarEventos: TADOQuery;
     Tciket: TADOQuery;
     DS_Ticket: TDataSource;
+    DS_Pedidos: TDataSource;
+    PedidosVendedor: TStringField;
+    PedidosVen1: TStringField;
+    PedidosEstado: TWideStringField;
+    ReporteHora: TADOQuery;
+    ReporteFecha: TADOQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

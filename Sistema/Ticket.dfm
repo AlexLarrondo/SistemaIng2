@@ -755,8 +755,8 @@ object Form12: TForm12
   object QuickRep1: TQuickRep
     Left = 0
     Top = 0
-    Width = 816
-    Height = 1056
+    Width = 794
+    Height = 1123
     Frame.Color = clBlack
     Frame.DrawTop = False
     Frame.DrawBottom = False
@@ -779,12 +779,12 @@ object Form12: TForm12
     Options = [FirstPageHeader, LastPageFooter]
     Page.Columns = 1
     Page.Orientation = poPortrait
-    Page.PaperSize = Letter
+    Page.PaperSize = A4
     Page.Values = (
       100.000000000000000000
-      2794.000000000000000000
+      2970.000000000000000000
       100.000000000000000000
-      2159.000000000000000000
+      2100.000000000000000000
       100.000000000000000000
       100.000000000000000000
       0.000000000000000000)
@@ -815,7 +815,7 @@ object Form12: TForm12
     object QRBand1: TQRBand
       Left = 38
       Top = 38
-      Width = 740
+      Width = 718
       Height = 154
       Frame.Color = clBlack
       Frame.DrawTop = True
@@ -829,12 +829,12 @@ object Form12: TForm12
       ForceNewPage = False
       Size.Values = (
         407.458333333333400000
-        1957.916666666667000000)
+        1899.708333333333000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbPageHeader
       object QRSysData1: TQRSysData
-        Left = 282
+        Left = 271
         Top = 65
         Width = 175
         Height = 42
@@ -845,7 +845,7 @@ object Form12: TForm12
         Frame.DrawRight = False
         Size.Values = (
           111.125000000000000000
-          746.125000000000000000
+          717.020833333333400000
           171.979166666666700000
           463.020833333333400000)
         Alignment = taCenter
@@ -864,20 +864,20 @@ object Form12: TForm12
         FontSize = 22
       end
       object QRImage1: TQRImage
-        Left = 16
-        Top = 17
-        Width = 129
-        Height = 112
+        Left = 24
+        Top = 34
+        Width = 81
+        Height = 73
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          296.333333333333300000
-          42.333333333333340000
-          44.979166666666670000
-          341.312500000000000000)
+          193.145833333333300000
+          63.500000000000000000
+          89.958333333333340000
+          214.312500000000000000)
         Picture.Data = {
           0A544A504547496D61676507620000FFD8FFE000104A46494600010101006000
           600000FFE1009445786966000049492A00080000000200310102000B00000026
@@ -1666,10 +1666,102 @@ object Form12: TForm12
           037ED484210F2C924210810908420424210810BFFFD9}
         Stretch = True
       end
+      object QRDBText5: TQRDBText
+        Left = 325
+        Top = 17
+        Width = 67
+        Height = 25
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          66.145833333333340000
+          859.895833333333400000
+          44.979166666666670000
+          177.270833333333300000)
+        Alignment = taCenter
+        AlignToBand = True
+        AutoSize = True
+        AutoStretch = False
+        Color = clWhite
+        DataSet = DM.Pedidos
+        DataField = 'Evento'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -21
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        FontSize = 16
+      end
+      object QRDBText7: TQRDBText
+        AlignWithMargins = True
+        Left = 535
+        Top = 131
+        Width = 56
+        Height = 17
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          44.979166666666670000
+          1415.520833333333000000
+          346.604166666666700000
+          148.166666666666700000)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Color = clWhite
+        DataSet = DM.Pedidos
+        DataField = 'Vendedor'
+        Transparent = False
+        WordWrap = True
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        FontSize = 10
+      end
+      object QRDBText8: TQRDBText
+        AlignWithMargins = True
+        Left = 615
+        Top = 131
+        Width = 31
+        Height = 17
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          44.979166666666670000
+          1627.187500000000000000
+          346.604166666666700000
+          82.020833333333340000)
+        Alignment = taRightJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Color = clWhite
+        DataSet = DM.Pedidos
+        DataField = 'Ven1'
+        Transparent = False
+        WordWrap = True
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        FontSize = 10
+      end
       object QRLabel5: TQRLabel
-        Left = 278
-        Top = 129
-        Width = 68
+        Left = 461
+        Top = 131
+        Width = 63
         Height = 20
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -1678,66 +1770,32 @@ object Form12: TForm12
         Frame.DrawRight = False
         Size.Values = (
           52.916666666666660000
-          735.541666666666800000
-          341.312500000000000000
-          179.916666666666700000)
-        Alignment = taLeftJustify
+          1219.729166666667000000
+          346.604166666666700000
+          166.687500000000000000)
+        Alignment = taCenter
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'EVENTO'
+        Caption = 'Vendedor'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -16
+        Font.Color = clWindowText
+        Font.Height = -13
         Font.Name = 'Arial'
-        Font.Style = [fsBold, fsUnderline]
+        Font.Style = [fsBold]
         ParentFont = False
         Transparent = False
         WordWrap = True
         ExportAs = exptText
         WrapStyle = BreakOnSpaces
-        FontSize = 12
-      end
-      object QRDBText5: TQRDBText
-        Left = 366
-        Top = 129
-        Width = 49
-        Height = 19
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          50.270833333333330000
-          968.375000000000000000
-          341.312500000000000000
-          129.645833333333300000)
-        Alignment = taLeftJustify
-        AlignToBand = False
-        AutoSize = True
-        AutoStretch = False
-        Color = clWhite
-        DataSet = DM.Pedidos
-        DataField = 'Evento'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -16
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        Transparent = False
-        WordWrap = True
-        ExportAs = exptText
-        WrapStyle = BreakOnSpaces
-        FontSize = 12
+        FontSize = 10
       end
     end
     object QRBand3: TQRBand
       Left = 38
       Top = 192
-      Width = 740
+      Width = 718
       Height = 89
       Frame.Color = clBlack
       Frame.DrawTop = True
@@ -1751,7 +1809,7 @@ object Form12: TForm12
       ForceNewPage = False
       Size.Values = (
         235.479166666666700000
-        1957.916666666667000000)
+        1899.708333333333000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbColumnHeader
@@ -1855,7 +1913,7 @@ object Form12: TForm12
         FontSize = 12
       end
       object QRLabel4: TQRLabel
-        Left = 318
+        Left = 283
         Top = 6
         Width = 103
         Height = 30
@@ -1866,11 +1924,11 @@ object Form12: TForm12
         Frame.DrawRight = False
         Size.Values = (
           79.375000000000000000
-          841.375000000000000000
+          748.770833333333400000
           15.875000000000000000
           272.520833333333400000)
         Alignment = taCenter
-        AlignToBand = True
+        AlignToBand = False
         AutoSize = True
         AutoStretch = False
         Caption = 'Ticket N'#186
@@ -1886,30 +1944,6 @@ object Form12: TForm12
         ExportAs = exptText
         WrapStyle = BreakOnSpaces
         FontSize = 18
-      end
-      object QRSysData2: TQRSysData
-        Left = 672
-        Top = 22
-        Width = 68
-        Height = 17
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          44.979166666666670000
-          1778.000000000000000000
-          58.208333333333340000
-          179.916666666666700000)
-        Alignment = taRightJustify
-        AlignToBand = True
-        AutoSize = True
-        Color = clWhite
-        Data = qrsDateTime
-        Transparent = False
-        ExportAs = exptText
-        FontSize = 10
       end
       object QRLabel7: TQRLabel
         Left = 420
@@ -1945,7 +1979,7 @@ object Form12: TForm12
         FontSize = 12
       end
       object QRDBText4: TQRDBText
-        Left = 427
+        Left = 403
         Top = 13
         Width = 11
         Height = 17
@@ -1956,7 +1990,7 @@ object Form12: TForm12
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          1129.770833333333000000
+          1066.270833333333000000
           34.395833333333340000
           29.104166666666670000)
         Alignment = taLeftJustify
@@ -1972,11 +2006,40 @@ object Form12: TForm12
         WrapStyle = BreakOnSpaces
         FontSize = 10
       end
+      object QRDBText6: TQRDBText
+        AlignWithMargins = True
+        Left = 681
+        Top = 16
+        Width = 37
+        Height = 17
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          44.979166666666670000
+          1801.812500000000000000
+          42.333333333333340000
+          97.895833333333340000)
+        Alignment = taRightJustify
+        AlignToBand = True
+        AutoSize = True
+        AutoStretch = False
+        Color = clWhite
+        DataSet = DM.Pedidos
+        DataField = 'Fecha'
+        Transparent = False
+        WordWrap = True
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        FontSize = 10
+      end
     end
     object QRBand4: TQRBand
       Left = 38
       Top = 321
-      Width = 740
+      Width = 718
       Height = 40
       Frame.Color = clBlack
       Frame.DrawTop = True
@@ -1990,12 +2053,43 @@ object Form12: TForm12
       ForceNewPage = False
       Size.Values = (
         105.833333333333300000
-        1957.916666666667000000)
+        1899.708333333333000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbSummary
+      object QRExpr2: TQRExpr
+        Left = 526
+        Top = 16
+        Width = 213
+        Height = 17
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          44.979166666666670000
+          1391.708333333333000000
+          42.333333333333340000
+          563.562500000000000000)
+        Alignment = taCenter
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        BiDiMode = bdRightToLeft
+        ParentBiDiMode = False
+        Color = clWhite
+        ResetAfterPrint = False
+        Transparent = False
+        WordWrap = True
+        Expression = 'SUM(ProdPedidoParaPedido.Precio)'
+        Mask = '$ 00.00'
+        ExportAs = exptNumeric
+        WrapStyle = BreakOnSpaces
+        FontSize = 10
+      end
       object QRLabel6: TQRLabel
-        Left = 546
+        Left = 552
         Top = 16
         Width = 39
         Height = 20
@@ -2006,7 +2100,7 @@ object Form12: TForm12
         Frame.DrawRight = False
         Size.Values = (
           52.916666666666660000
-          1444.625000000000000000
+          1460.500000000000000000
           42.333333333333340000
           103.187500000000000000)
         Alignment = taLeftJustify
@@ -2027,42 +2121,11 @@ object Form12: TForm12
         WrapStyle = BreakOnSpaces
         FontSize = 12
       end
-      object QRExpr2: TQRExpr
-        Left = 511
-        Top = 16
-        Width = 213
-        Height = 17
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          44.979166666666670000
-          1352.020833333333000000
-          42.333333333333340000
-          563.562500000000000000)
-        Alignment = taCenter
-        AlignToBand = False
-        AutoSize = True
-        AutoStretch = False
-        BiDiMode = bdRightToLeft
-        ParentBiDiMode = False
-        Color = clWhite
-        ResetAfterPrint = False
-        Transparent = False
-        WordWrap = True
-        Expression = 'SUM(ProdPedidoParaPedido.Precio)'
-        Mask = '$ 00.00'
-        ExportAs = exptNumeric
-        WrapStyle = BreakOnSpaces
-        FontSize = 10
-      end
     end
     object QRBand5: TQRBand
       Left = 38
       Top = 281
-      Width = 740
+      Width = 718
       Height = 40
       Frame.Color = clBlack
       Frame.DrawTop = False
@@ -2076,7 +2139,7 @@ object Form12: TForm12
       ForceNewPage = False
       Size.Values = (
         105.833333333333300000
-        1957.916666666667000000)
+        1899.708333333333000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbDetail

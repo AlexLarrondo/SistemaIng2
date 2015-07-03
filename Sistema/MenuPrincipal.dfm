@@ -1608,11 +1608,20 @@ object Form4: TForm4
         Caption = 'Generar Pedido'
         OnClick = GenerarPedido1Click
       end
+      object ListarPedidos1: TMenuItem
+        Caption = 'Listar Pedidos'
+        OnClick = ListarPedidos1Click
+      end
     end
     object Reportes1: TMenuItem
       Caption = '&Reportes'
+      object Generarreporteentrefechas1: TMenuItem
+        Caption = 'Generar reporte entre fechas'
+        OnClick = Generarreporteentrefechas1Click
+      end
       object Generarreportediario1: TMenuItem
-        Caption = 'Generar reporte '
+        Caption = 'Generar reporte por franja horaria'
+        OnClick = Generarreportediario1Click
       end
     end
     object Usuarios1: TMenuItem

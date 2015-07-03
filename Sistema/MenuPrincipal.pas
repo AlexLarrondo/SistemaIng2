@@ -6,7 +6,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, StdCtrls, ExtCtrls, jpeg, ListadoUsuarios, Bases, AltaProducto,
-  ListadoProductos, AltaEvento, ListadoEventosActivos, GenerarPedido;
+  ListadoProductos, AltaEvento, ListadoEventosActivos, GenerarPedido,
+  ListadoPedidos, FranjaHoraria, ReportePorFechas;
 
 type
   TForm4 = class(TForm)
@@ -28,6 +29,8 @@ type
     Eventos1: TMenuItem;
     Listareventosactivos1: TMenuItem;
     Dardealtaunevento1: TMenuItem;
+    ListarPedidos1: TMenuItem;
+    Generarreporteentrefechas1: TMenuItem;
     procedure Salir1Click(Sender: TObject);
     procedure Listarusuarios1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -36,6 +39,9 @@ type
     procedure Dardealtaunevento1Click(Sender: TObject);
     procedure Listareventosactivos1Click(Sender: TObject);
     procedure GenerarPedido1Click(Sender: TObject);
+    procedure ListarPedidos1Click(Sender: TObject);
+    procedure Generarreportediario1Click(Sender: TObject);
+    procedure Generarreporteentrefechas1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -82,11 +88,11 @@ begin
 
  if evento = '<Elije un evento>' then begin
     GenerarPedido1.Enabled:=false;
-
+    ListarPedidos1.Enabled:=False;
     end
     else begin
       GenerarPedido1.Enabled:=true;
-
+       ListarPedidos1.Enabled:=true;
      end;
 
 end;
@@ -101,9 +107,24 @@ begin
     DM.Pedidos.Delete
 end;
 
+procedure TForm4.Generarreportediario1Click(Sender: TObject);
+begin
+  Form15.show;
+end;
+
+procedure TForm4.Generarreporteentrefechas1Click(Sender: TObject);
+begin
+ Form16.Show;
+end;
+
 procedure TForm4.Listareventosactivos1Click(Sender: TObject);
 begin
   Form10.show;
+end;
+
+procedure TForm4.ListarPedidos1Click(Sender: TObject);
+begin
+  Form13.Show;
 end;
 
 procedure TForm4.ListarProductos1Click(Sender: TObject);

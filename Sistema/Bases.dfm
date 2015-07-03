@@ -384,27 +384,53 @@ object DM: TDM
     Left = 368
     Top = 240
     object PedidosId: TAutoIncField
+      DisplayWidth = 12
       FieldName = 'Id'
       ReadOnly = True
     end
     object PedidosFecha: TDateTimeField
+      DisplayWidth = 21
       FieldName = 'Fecha'
     end
     object PedidosPrecio_Total: TBCDField
+      DisplayWidth = 15
       FieldName = 'Precio_Total'
-      DisplayFormat = '$ 00,00'
+      DisplayFormat = '$ 00.00'
       Precision = 19
     end
     object PedidosDNI: TIntegerField
+      DisplayWidth = 14
       FieldName = 'DNI'
     end
     object PedidosEvento: TWideStringField
+      DisplayWidth = 298
       FieldName = 'Evento'
+      Size = 255
+    end
+    object PedidosVendedor: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Vendedor'
+      LookupDataSet = Usuarios
+      LookupKeyFields = 'DNI'
+      LookupResultField = 'Nombre'
+      KeyFields = 'DNI'
+      Lookup = True
+    end
+    object PedidosVen1: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Ven1'
+      LookupDataSet = Usuarios
+      LookupKeyFields = 'DNI'
+      LookupResultField = 'Apellido'
+      KeyFields = 'DNI'
+      Lookup = True
+    end
+    object PedidosEstado: TWideStringField
+      FieldName = 'Estado'
       Size = 255
     end
   end
   object ProdPedidoParaPedido: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <
@@ -483,5 +509,87 @@ object DM: TDM
     DataSet = Tciket
     Left = 440
     Top = 312
+  end
+  object DS_Pedidos: TDataSource
+    DataSet = Pedidos
+    Left = 440
+    Top = 248
+  end
+  object ReporteHora: TADOQuery
+    Active = True
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'Desde'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end
+      item
+        Name = 'Hasta'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'SELECT O.NombreProd, COUNT(P.Id) as CantPedidos, SUM(O.Cantidad)' +
+        ' as CantProdutos, SUM(O.Precio) as PrecioXProd'
+      'FROM Pedidos P, ProductoPedido O'
+      'WHERE P.Fecha >= :Desde and P.Fecha <= :Hasta  and P.Id=O.Id'
+      'GROUP BY O.NombreProd')
+    Left = 536
+    Top = 208
+  end
+  object ReporteFecha: TADOQuery
+    Active = True
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'Fecha1'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end
+      item
+        Name = 'Fecha2'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end
+      item
+        Name = 'Evento'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'SELECT O.NombreProd, COUNT(P.Id) as CantPedidos, SUM(O.Cantidad)' +
+        ' as CantProdutos, SUM(O.Precio) as PrecioXProd'
+      'FROM Pedidos P, ProductoPedido O'
+      
+        'WHERE P.Fecha >= :Fecha1 and P.Fecha <= :Fecha2  and P.Id=O.Id  ' +
+        'and P.Evento = :Evento'
+      'GROUP BY O.NombreProd')
+    Left = 536
+    Top = 264
   end
 end
