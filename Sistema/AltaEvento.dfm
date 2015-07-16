@@ -805,7 +805,7 @@ object Form9: TForm9
       end
     end
     object GroupBox3: TGroupBox
-      Left = 304
+      Left = 277
       Top = 152
       Width = 165
       Height = 98
@@ -907,7 +907,7 @@ object Form9: TForm9
       end
     end
     object GroupBox5: TGroupBox
-      Left = 27
+      Left = 51
       Top = 152
       Width = 165
       Height = 98

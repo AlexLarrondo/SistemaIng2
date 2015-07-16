@@ -62,7 +62,8 @@ implementation
 
 procedure TForm8.DBGrid1TitleClick(Column: TColumn);
 begin
-   DM.ProductosActivos.Sort:= Column.Title.Caption ;
+  if not(Column.Title.Caption = 'Precio compra') and not(Column.Title.Caption = 'Precio venta')  then
+    DM.ProductosActivos.Sort:= Column.Title.Caption ;
 end;
 
 procedure TForm8.Edit1Change(Sender: TObject);

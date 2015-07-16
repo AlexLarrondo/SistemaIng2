@@ -28,6 +28,7 @@ type
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
     procedure Label1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure Edit5KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -49,6 +50,14 @@ begin
 {Verifica que en el campo contraseña solo se ingresen letras y/o números}
  if not (Key in ['A'..'Z', 'a'..'z','0'..'9',#8]) then
     key := #0;
+ if key = #13 then
+    SpeedButton2Click(Sender);
+end;
+
+procedure TForm3.Edit5KeyPress(Sender: TObject; var Key: Char);
+begin
+   if key = #13 then
+    SpeedButton2Click(Sender);
 end;
 
 procedure TForm3.FormActivate(Sender: TObject);

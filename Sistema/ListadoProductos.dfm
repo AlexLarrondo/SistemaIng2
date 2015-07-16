@@ -1,8 +1,8 @@
 object Form8: TForm8
   Left = 0
   Top = 0
-  Width = 524
-  Height = 455
+  Width = 522
+  Height = 458
   AutoScroll = True
   AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
@@ -757,8 +757,8 @@ object Form8: TForm8
   PixelsPerInch = 96
   TextHeight = 13
   object Label2: TLabel
-    Left = 48
-    Top = 200
+    Left = 54
+    Top = 203
     Width = 181
     Height = 14
     Caption = 'Filtrar H'#250'espedes por nombre'
@@ -771,11 +771,11 @@ object Form8: TForm8
   end
   object DBGrid1: TDBGrid
     AlignWithMargins = True
-    Left = 5
+    Left = 3
     Top = 3
     Width = 508
     Height = 388
-    Color = cl3DDkShadow
+    Color = clBtnFace
     DataSource = DM.DataSource4
     FixedColor = clWhite
     GradientEndColor = clMaroon
@@ -829,8 +829,8 @@ object Form8: TForm8
   end
   object GroupBox1: TGroupBox
     AlignWithMargins = True
-    Left = 3
-    Top = 3
+    Left = 6
+    Top = 6
     Width = 505
     Height = 422
     Color = cl3DDkShadow
@@ -1103,11 +1103,10 @@ object Form8: TForm8
     end
   end
   object Panel3: TPanel
-    Left = 8
-    Top = 392
+    Left = 6
+    Top = 397
     Width = 505
     Height = 33
-    Color = cl3DDkShadow
     ParentBackground = False
     TabOrder = 2
     object Label1: TLabel

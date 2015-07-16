@@ -45,6 +45,7 @@ end;
 procedure TForm9.FormActivate(Sender: TObject);
 begin
   Edit1.Text:='';
+  DateTimePicker1.MinDate:=date;
   DateTimePicker1.Date:=date;
   DateTimePicker2.Date:=date;
   datetimepicker1.MinDate:=trunc(datetimepicker2.Date);
@@ -53,10 +54,6 @@ end;
 
 procedure TForm9.SpeedButton1Click(Sender: TObject);
 begin
-  DateTimePicker1.Date:=date;
-  DateTimePicker2.Date:=date;
-  datetimepicker1.MinDate:=trunc(datetimepicker2.Date);
-  datetimepicker2.MinDate:=date;
   Close;
 end;
 
@@ -91,10 +88,6 @@ begin
             DM.Eventos.FieldByName('Fecha_Inicio').AsDateTime:=Trunc(DateTimePicker2.DateTime);
             DM.Eventos.FieldByName('Fecha_Final').AsDateTime:=Trunc(DateTimePicker1.DateTime);
             DM.Eventos.Post;
-            DateTimePicker1.Date:=date;
-            DateTimePicker2.Date:=date;
-            datetimepicker1.MinDate:=trunc(datetimepicker2.Date);
-            datetimepicker2.MinDate:=date;
             MessageDlg('El evento ha sido dado de alta',mtInformation,[mbOk],0);
             Close;
             end;

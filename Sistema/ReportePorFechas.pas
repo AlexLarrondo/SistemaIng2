@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Bases, ComCtrls, DBCtrls, Buttons, ExtCtrls, StdCtrls, ReporteFechas;
+  Dialogs, Bases, ComCtrls, DBCtrls, Buttons, ExtCtrls, StdCtrls, ReporteFechas,
+  Unit18;
 
 type
   TForm16 = class(TForm)
@@ -20,6 +21,10 @@ type
     DateTimePicker1: TDateTimePicker;
     DateTimePicker2: TDateTimePicker;
     procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure DateTimePicker1Change(Sender: TObject);
+    procedure DBLookupComboBox1KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -33,14 +38,42 @@ implementation
 
 {$R *.dfm}
 
+procedure TForm16.DateTimePicker1Change(Sender: TObject);
+begin
+  datetimepicker2.MinDate:=trunc(datetimepicker1.Date);
+end;
+
+procedure TForm16.DBLookupComboBox1KeyPress(Sender: TObject; var Key: Char);
+begin
+  if key = #13 then
+    SpeedButton2Click(Sender);
+end;
+
+procedure TForm16.FormActivate(Sender: TObject);
+begin
+  DBLookUpComboBox1.KeyValue:='<Elije un evento>';
+  DateTimePicker1.Date:=date;
+  DateTimePicker2.Date:=date;
+  datetimepicker2.MinDate:=trunc(datetimepicker1.Date);
+end;
+
+procedure TForm16.SpeedButton1Click(Sender: TObject);
+begin
+  Close;
+end;
+
 procedure TForm16.SpeedButton2Click(Sender: TObject);
 begin
-  DM.ReporteFecha.Close;
-  DM.ReporteFecha.Parameters.ParamByName('Evento').Value:=dblookupcombobox1.keyvalue;
-  DM.ReporteFecha.Parameters.ParamByName('Fecha1').Value:=DatetoStr(DateTimePicker1.Date);
-  DM.ReporteFecha.Parameters.ParamByName('Fecha2').Value:=DatetoStr(DateTimePicker2.Date);
-  DM.ReporteFecha.Open;
-  Form17.QuickRep1.preview;
+  if DBLookUpComboBox1.KeyValue = '<Elije un evento>' then
+     MessageDlg('Seleccione un evento',mterror,[mbOk],0)
+     else begin
+        DM.ReporteFecha.Close;
+        DM.ReporteFecha.Parameters.ParamByName('Evento').Value:=dblookupcombobox1.keyvalue;
+        DM.ReporteFecha.Parameters.ParamByName('Fecha1').Value:=DatetoStr(DateTimePicker1.Date);
+        DM.ReporteFecha.Parameters.ParamByName('Fecha2').Value:=DatetoStr(DateTimePicker2.Date+1);
+        DM.ReporteFecha.Open;
+        Form17.QuickRep1.preview;
+     end;
 end;
 
 end.

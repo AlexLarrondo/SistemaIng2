@@ -1,0 +1,193 @@
+unit RecuperarContraseña;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Buttons, ExtCtrls, StdCtrls;
+
+type
+  TForm5 = class(TForm)
+    GroupBox1: TGroupBox;
+    GroupBox6: TGroupBox;
+    Edit5: TEdit;
+    GroupBox2: TGroupBox;
+    Edit2: TEdit;
+    Panel2: TPanel;
+    SpeedButton2: TSpeedButton;
+    Panel1: TPanel;
+    SpeedButton1: TSpeedButton;
+    GroupBox3: TGroupBox;
+    Edit1: TEdit;
+    GroupBox4: TGroupBox;
+    GroupBox5: TGroupBox;
+    Edit4: TEdit;
+    Panel3: TPanel;
+    SpeedButton3: TSpeedButton;
+    Panel4: TPanel;
+    SpeedButton4: TSpeedButton;
+    Panel5: TPanel;
+    SpeedButton5: TSpeedButton;
+    Panel6: TPanel;
+    SpeedButton6: TSpeedButton;
+    Edit3: TEdit;
+    Label3: TLabel;
+    Label5: TLabel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label4: TLabel;
+    Label6: TLabel;
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure SpeedButton6Click(Sender: TObject);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form5: TForm5;
+
+implementation
+
+uses Bases;
+
+{$R *.dfm}
+
+procedure TForm5.Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+{Verifica que en los campos contraseña y confirmar contraseña solo se ingresen
+letras y números}
+ if not (Key in ['A'..'Z', 'a'..'z','0'..'9',#8]) then
+    key := #0;
+end;
+
+procedure TForm5.FormActivate(Sender: TObject);
+begin
+  Edit1.text:='';
+  Edit2.text:='';
+  Edit3.text:='';
+  Edit4.text:='';
+  Edit5.text:='';
+  GroupBox3.visible:=false;
+  GroupBox4.Visible:=false;
+  GroupBox2.visible:=false;
+  GroupBox5.Visible:=false;
+  Panel3.Visible:=false;
+  Panel4.Visible:=false;
+  Panel5.Visible:=false;
+  Panel6.Visible:=false;
+  Panel1.Visible:=true;
+  Panel2.Visible:=true;
+end;
+
+procedure TForm5.SpeedButton1Click(Sender: TObject);
+begin
+{Cierra el formulario sin guardar cambios}
+  Close;
+end;
+
+procedure TForm5.SpeedButton2Click(Sender: TObject);
+begin
+{Consulta SQL para quedarnos con los datos de usuario de el DNI ingresado,
+en caso de no existir se notifica. Si existe se abren campos ocultos a llenar}
+  if Length(Edit5.Text)=0 then
+     MessageDlg('Ingrese el DNI',mterror,[mbOk],0)
+     else
+      DM.ADOQuery1.Close;
+      DM.ADOQuery1.Parameters.ParamByName('DNI').Value:=Edit5.Text;
+      DM.ADOQuery1.Open;
+      if Edit5.Text <> DM.ADOQuery1.Fields[0].AsString then
+        MessageDlg('El DNI no se encuentra registrado',mterror,[mbOk],0)
+        else begin
+          GroupBox3.visible:=true;
+          GroupBox4.Visible:=true;
+          Panel1.Visible:=false;
+          Panel2.Visible:=false;
+          Panel3.Visible:=true;
+          Panel4.Visible:=true;
+          Height:=315;
+          Edit1.Text:=DM.ADOQuery1.Fields[1].AsString[1];
+          Edit3.Text:=DM.ADOQuery1.Fields[2].AsString[1];
+        end;
+end;
+
+procedure TForm5.SpeedButton3Click(Sender: TObject);
+begin
+{Chequea que el nombre y apellido ingresado sean correctos}
+  if ((Edit1.Text=DM.ADOQuery1.Fields[1].AsString) and (Edit3.Text=DM.ADOQuery1.Fields[2].AsString)) then begin
+      Height:=442;
+      GroupBox2.visible:=true;
+      GroupBox5.Visible:=true;
+      LABEL3.Visible:=true;
+      LABEL4.Visible:=true;
+      LABEL5.Visible:=true;
+      LABEL6.Visible:=true;
+      Panel3.Visible:=false;
+      Panel4.Visible:=false;
+      Panel5.Visible:=true;
+      Panel6.Visible:=true;
+  end
+  else
+    MessageDlg('Los datos ingresados no coinciden con los registrados', mterror,[mbOk],0);
+end;
+
+procedure TForm5.SpeedButton4Click(Sender: TObject);
+begin
+{Vuelvo al paso 1 mostrando solo campo DNI}
+   GroupBox3.visible:=false;
+   GroupBox4.Visible:=false;
+   Panel3.Visible:=false;
+   Panel4.Visible:=false;
+   Panel1.Visible:=true;
+   Panel2.Visible:=true;
+end;
+
+procedure TForm5.SpeedButton5Click(Sender: TObject);
+begin
+{Verifica que la contraseña no sea menos a 4 dígitos, que coincida la
+confirmación y edita con el nuevo pass para ese usuario}
+  if (Length(Edit4.Text)<4) then
+    MessageDlg ('La contraseña debe tener mínimo 4 caracteres',mtInformation,[mbOk],0)
+    else
+    if Edit2.Text = Edit4.Text then begin
+      DM.ADOQuery1.Edit;
+      DM.ADOQuery1.FieldByName('Pass').AsString:=Edit2.Text;
+      if (MessageDlg('¿Confirma modificar su contraseña?',mtWarning,[mbYes,mbNo],0)= mrYes) then
+        begin
+        DM.ADOQuery1.Post;
+        MessageDlg('Su contraseña fue modificada con éxito',mtinformation,[mbOk],0);
+        Close;
+        end
+    end
+    else
+      MessageDlg ('No coinciden las contraseñas',mterror,[mbOk],0) ;
+end;
+
+procedure TForm5.SpeedButton6Click(Sender: TObject);
+begin
+{Vuelve al paso 1 mostrando el campo DNI}
+   DM.Usuarios.Cancel;
+   LABEL3.Visible:=false;
+   LABEL4.Visible:=false;
+   LABEL5.Visible:=false;
+   LABEL6.Visible:=false;
+   GroupBox3.visible:=false;
+   GroupBox4.Visible:=false;
+   GroupBox2.visible:=false;
+   GroupBox5.Visible:=false;
+   Panel3.Visible:=false;
+   Panel4.Visible:=false;
+   Panel5.Visible:=false;
+   Panel6.Visible:=false;
+   Panel1.Visible:=true;
+   Panel2.Visible:=true;
+end;
+
+end.

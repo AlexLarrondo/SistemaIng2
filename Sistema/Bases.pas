@@ -1,4 +1,5 @@
 unit Bases;
+ //WHERE P.Fecha >= :Fecha1 and P.Fecha <= :Fecha2 AND P.Estado = 'Facturado' And P.Evento = :Evento
 //Data Module
 interface
 
@@ -84,6 +85,22 @@ type
     PedidosEstado: TWideStringField;
     ReporteHora: TADOQuery;
     ReporteFecha: TADOQuery;
+    ReporteHoraNombreProd: TWideStringField;
+    ReporteHoraCantProdutos: TFloatField;
+    ReporteHoraPrecioXProd: TBCDField;
+    TciketPrecio_Total: TBCDField;
+    TciketEvento: TWideStringField;
+    TciketCantidad: TIntegerField;
+    TciketNombreProd: TWideStringField;
+    TciketPrecio: TBCDField;
+    CantPedidoRep: TADOQuery;
+    CantPedidoRepCantPedidos: TIntegerField;
+    ReporteFechaNombreProd: TWideStringField;
+    ReporteFechaCantProdutos: TFloatField;
+    ReporteFechaPrecioXProd: TBCDField;
+    ReporteFechaExpr1001: TDateTimeField;
+    CantPedidoRep2: TADOQuery;
+    IntegerField1: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

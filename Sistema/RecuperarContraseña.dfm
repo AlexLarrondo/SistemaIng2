@@ -1,12 +1,10 @@
 object Form5: TForm5
-  AlignWithMargins = True
   Left = 0
   Top = 0
   ActiveControl = Edit5
-  AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #191'Olvidaste tu contrase'#241'a?'
-  ClientHeight = 415
+  ClientHeight = 107
   ClientWidth = 495
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -805,6 +803,7 @@ object Form5: TForm5
       Font.Name = 'Arial'
       Font.Style = [fsItalic]
       ParentFont = False
+      Visible = False
     end
     object Label5: TLabel
       Left = 41
@@ -818,6 +817,7 @@ object Form5: TForm5
       Font.Name = 'Arial'
       Font.Style = [fsItalic]
       ParentFont = False
+      Visible = False
     end
     object Label4: TLabel
       Left = 255
@@ -831,6 +831,7 @@ object Form5: TForm5
       Font.Name = 'Arial'
       Font.Style = [fsItalic]
       ParentFont = False
+      Visible = False
     end
     object Label6: TLabel
       Left = 256
@@ -844,6 +845,7 @@ object Form5: TForm5
       Font.Name = 'Arial'
       Font.Style = [fsItalic]
       ParentFont = False
+      Visible = False
     end
     object GroupBox6: TGroupBox
       Left = 37

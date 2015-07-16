@@ -3,6 +3,7 @@ object Form16: TForm16
   Top = 0
   Width = 425
   Height = 348
+  ActiveControl = DBLookupComboBox1
   AutoScroll = True
   AutoSize = True
   Caption = 'Reporte entre fechas'
@@ -752,6 +753,7 @@ object Form16: TForm16
     0000F00F0000}
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
@@ -781,7 +783,7 @@ object Form16: TForm16
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 2
       object DateTimePicker2: TDateTimePicker
         Left = 0
         Top = 40
@@ -790,6 +792,7 @@ object Form16: TForm16
         Date = 42180.857483171300000000
         Time = 42180.857483171300000000
         TabOrder = 0
+        OnKeyPress = DBLookupComboBox1KeyPress
       end
     end
     object Panel2: TPanel
@@ -805,7 +808,7 @@ object Form16: TForm16
       Color = clWhite
       ParentBackground = False
       ShowCaption = False
-      TabOrder = 2
+      TabOrder = 3
       object SpeedButton2: TSpeedButton
         AlignWithMargins = True
         Left = 6
@@ -841,7 +844,7 @@ object Form16: TForm16
       Color = clWhite
       ParentBackground = False
       ShowCaption = False
-      TabOrder = 3
+      TabOrder = 4
       object SpeedButton1: TSpeedButton
         AlignWithMargins = True
         Left = 6
@@ -861,6 +864,7 @@ object Form16: TForm16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = SpeedButton1Click
       end
     end
     object GroupBox5: TGroupBox
@@ -875,7 +879,7 @@ object Form16: TForm16
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 0
+      TabOrder = 1
       object DateTimePicker1: TDateTimePicker
         Left = 0
         Top = 40
@@ -884,6 +888,8 @@ object Form16: TForm16
         Date = 42180.857483171300000000
         Time = 42180.857483171300000000
         TabOrder = 0
+        OnChange = DateTimePicker1Change
+        OnKeyPress = DBLookupComboBox1KeyPress
       end
     end
     object GroupBox2: TGroupBox
@@ -898,15 +904,16 @@ object Form16: TForm16
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 0
       object DBLookupComboBox1: TDBLookupComboBox
         Left = 3
         Top = 40
         Width = 210
         Height = 27
         KeyField = 'Nombre'
-        ListSource = DM.DS_EventosActivos
+        ListSource = DM.DataSource6
         TabOrder = 0
+        OnKeyPress = DBLookupComboBox1KeyPress
       end
     end
   end

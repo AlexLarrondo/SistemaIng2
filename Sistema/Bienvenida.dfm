@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 402
   Top = 160
   Width = 452
-  Height = 448
+  Height = 424
   VertScrollBar.Smooth = True
   VertScrollBar.Style = ssHotTrack
   VertScrollBar.Tracking = True
@@ -779,7 +779,7 @@ object Form1: TForm1
   end
   object Image1: TImage
     Left = 0
-    Top = 54
+    Top = 30
     Width = 217
     Height = 307
     Center = True

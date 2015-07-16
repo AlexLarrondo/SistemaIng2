@@ -756,7 +756,7 @@ object Form7: TForm7
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 8
+    Top = 0
     Width = 505
     Height = 417
     Color = cl3DDkShadow

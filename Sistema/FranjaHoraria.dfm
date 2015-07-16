@@ -3,7 +3,7 @@ object Form15: TForm15
   Top = 0
   AutoSize = True
   Caption = 'Reporte'
-  ClientHeight = 321
+  ClientHeight = 353
   ClientWidth = 417
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -751,13 +751,14 @@ object Form15: TForm15
     0000F00F0000}
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
     Width = 417
-    Height = 321
+    Height = 353
     Color = cl3DDkShadow
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlue
@@ -780,7 +781,7 @@ object Form15: TForm15
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 2
       object DateTimePicker1: TDateTimePicker
         Left = 20
         Top = 36
@@ -797,6 +798,7 @@ object Form15: TForm15
         Kind = dtkTime
         ParentFont = False
         TabOrder = 0
+        OnKeyPress = DateTimePicker3KeyPress
       end
     end
     object Panel2: TPanel
@@ -812,7 +814,7 @@ object Form15: TForm15
       Color = clWhite
       ParentBackground = False
       ShowCaption = False
-      TabOrder = 2
+      TabOrder = 3
       object SpeedButton2: TSpeedButton
         AlignWithMargins = True
         Left = 6
@@ -848,7 +850,7 @@ object Form15: TForm15
       Color = clWhite
       ParentBackground = False
       ShowCaption = False
-      TabOrder = 3
+      TabOrder = 4
       object SpeedButton1: TSpeedButton
         AlignWithMargins = True
         Left = 6
@@ -868,6 +870,7 @@ object Form15: TForm15
         Font.Name = 'Arial'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = SpeedButton1Click
       end
     end
     object GroupBox5: TGroupBox
@@ -882,7 +885,7 @@ object Form15: TForm15
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 0
+      TabOrder = 1
       object DateTimePicker2: TDateTimePicker
         Left = 20
         Top = 36
@@ -899,6 +902,7 @@ object Form15: TForm15
         Kind = dtkTime
         ParentFont = False
         TabOrder = 0
+        OnKeyPress = DateTimePicker3KeyPress
       end
     end
     object GroupBox2: TGroupBox
@@ -913,7 +917,7 @@ object Form15: TForm15
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 0
       object DateTimePicker3: TDateTimePicker
         Left = 20
         Top = 36
@@ -929,6 +933,7 @@ object Form15: TForm15
         Font.Style = [fsBold]
         ParentFont = False
         TabOrder = 0
+        OnKeyPress = DateTimePicker3KeyPress
       end
     end
   end

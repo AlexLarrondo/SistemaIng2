@@ -51,6 +51,8 @@
     <Transaction>2015/06/25 20:32:46.281.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit16.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\ReportePorFechas.dfm</Transaction>
     <Transaction>2015/06/25 20:38:06.250.pas,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit17.pas=C:\Documents and Settings\Alex\Escritorio\Sistema\ReporteFechas.pas</Transaction>
     <Transaction>2015/06/25 20:38:06.250.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit17.dfm=C:\Documents and Settings\Alex\Escritorio\Sistema\ReporteFechas.dfm</Transaction>
+    <Transaction>2015/07/16 17:32:05.671.pas,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit18.pas=</Transaction>
+    <Transaction>2015/07/16 17:32:05.687.dfm,C:\Documents and Settings\Alex\Escritorio\Sistema\Unit18.dfm=</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="Bases.pas"/>

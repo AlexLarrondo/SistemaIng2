@@ -11,7 +11,6 @@ type
     QuickRep1: TQuickRep;
     QRBand1: TQRBand;
     QRSysData1: TQRSysData;
-    QRImage1: TQRImage;
     QRBand3: TQRBand;
     QRLabel1: TQRLabel;
     QRLabel2: TQRLabel;
@@ -23,10 +22,17 @@ type
     QRBand2: TQRBand;
     QRExpr1: TQRExpr;
     QRLabel5: TQRLabel;
-    QRDBText5: TQRDBText;
     QRLabel7: TQRLabel;
     QRGroup1: TQRGroup;
+    QRLabel4: TQRLabel;
     QRDBText4: TQRDBText;
+    QRImage1: TQRImage;
+    QRBand4: TQRBand;
+    QRLabel6: TQRLabel;
+    QRExpr2: TQRExpr;
+    procedure QRGroup1BeforePrint(Sender: TQRCustomBand;
+      var PrintBand: Boolean);
+    procedure QRGroup1AfterPrint(Sender: TQRCustomBand; BandPrinted: Boolean);
   private
     { Private declarations }
   public
@@ -35,9 +41,27 @@ type
 
 var
   Form17: TForm17;
-
+  Subtotal: integer;
 implementation
 
 {$R *.dfm}
+
+procedure TForm17.QRGroup1AfterPrint(Sender: TQRCustomBand;
+  BandPrinted: Boolean);
+
+begin
+  DM.CantPedidoRep2.Close;
+  DM.CantPedidoRep2.Parameters.ParamByName('f').Value:=DatetoStr(DM.ReporteFecha.FieldByName('Expr1001').AsDateTime);
+  DM.CantPedidoRep2.Parameters.ParamByName('f1').Value:=DatetoStr(DM.ReporteFecha.FieldByName('Expr1001').AsDateTime+1);
+  DM.CantPedidoRep2.Open;
+
+
+end;
+
+procedure TForm17.QRGroup1BeforePrint(Sender: TQRCustomBand;
+  var PrintBand: Boolean);
+begin
+    Qrlabel4.Caption:= DateToStr(DM.ReporteFecha.FieldByName('Expr1001').AsDateTime);
+  end;
 
 end.

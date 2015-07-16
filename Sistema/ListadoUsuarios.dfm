@@ -2,7 +2,7 @@ object Form6: TForm6
   Left = 0
   Top = 0
   Width = 497
-  Height = 338
+  Height = 341
   AutoScroll = True
   AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
@@ -759,10 +759,10 @@ object Form6: TForm6
   object DBGrid1: TDBGrid
     AlignWithMargins = True
     Left = 8
-    Top = 3
+    Top = 7
     Width = 478
     Height = 272
-    Color = cl3DDkShadow
+    Color = clBtnFace
     DataSource = DM.DataSource5
     FixedColor = clWhite
     GradientEndColor = clMaroon
@@ -798,7 +798,7 @@ object Form6: TForm6
         Expanded = False
         FieldName = 'Nombre'
         PopupMenu = PopupMenu1
-        Width = 160
+        Width = 146
         Visible = True
       end
       item
@@ -995,10 +995,9 @@ object Form6: TForm6
   end
   object Panel3: TPanel
     Left = 8
-    Top = 277
+    Top = 281
     Width = 478
     Height = 33
-    Color = cl3DDkShadow
     ParentBackground = False
     TabOrder = 2
     object Label1: TLabel

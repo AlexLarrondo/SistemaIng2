@@ -4,6 +4,7 @@ object Form13: TForm13
   Top = 0
   Width = 607
   Height = 447
+  AlphaBlend = True
   AutoScroll = True
   AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
@@ -764,7 +765,7 @@ object Form13: TForm13
     Top = 3
     Width = 593
     Height = 414
-    Color = cl3DDkShadow
+    Color = clBtnFace
     DataSource = DM.DS_Pedidos
     FixedColor = clWhite
     GradientEndColor = clMaroon
@@ -788,7 +789,8 @@ object Form13: TForm13
         Expanded = False
         FieldName = 'Id'
         PopupMenu = PopupMenu1
-        Width = 49
+        Title.Caption = 'N'#250'mero'
+        Width = 63
         Visible = True
       end
       item
@@ -802,6 +804,7 @@ object Form13: TForm13
         Expanded = False
         FieldName = 'Precio_Total'
         PopupMenu = PopupMenu1
+        Title.Caption = 'Precio '
         Width = 84
         Visible = True
       end
@@ -809,7 +812,7 @@ object Form13: TForm13
         Expanded = False
         FieldName = 'Vendedor'
         PopupMenu = PopupMenu1
-        Width = 74
+        Width = 76
         Visible = True
       end
       item
@@ -822,18 +825,17 @@ object Form13: TForm13
   end
   object Panel3: TPanel
     Left = 3
-    Top = 376
-    Width = 566
+    Top = 384
+    Width = 596
     Height = 36
-    Color = cl3DDkShadow
     ParentBackground = False
     TabOrder = 1
     object Label1: TLabel
       Left = 16
       Top = 10
-      Width = 157
+      Width = 160
       Height = 15
-      Caption = 'Filtrarpor n'#250'mero de pedido'
+      Caption = 'Filtrar por n'#250'mero de pedido'
       Font.Charset = ANSI_CHARSET
       Font.Color = clMaroon
       Font.Height = -12

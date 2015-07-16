@@ -36,7 +36,33 @@ uses MenuPrincipal;
 {$R *.dfm}
 
 procedure TForm13.Anularticket1Click(Sender: TObject);
+VAR
+Nombre: string;
+Cantidad: integer;
+Seguir: boolean;
 begin
+
+  DM.ProdPedidoParaPedido.Close;
+  DM.ProdPedidoParaPedido.Parameters.ParamByName('Num').Value:= DM.Pedidos.FieldByName('Id').AsString;
+  DM.ProdPedidoParaPedido.Open;
+  DM.ProdPedidoParaPedido.First;
+  while not DM.ProdPedidoParaPedido.Eof  do begin
+    Nombre:=DM.ProdPedidoParaPedido.FieldByName('NombreProd').AsString;
+    Cantidad:=DM.ProdPedidoParaPedido.FieldByName('Cantidad').AsInteger;
+    DM.Productos.Requery();
+    DM.Productos.First;
+    Seguir:=true;
+    while not DM.Productos.Eof and Seguir do BEGIN
+      if Nombre = DM.Productos.FieldByName('Nombre').AsString then BEGIN
+        DM.Productos.Edit;
+        DM.Productos.FieldByName('Cantidad').AsInteger:=  DM.Productos.FieldByName('Cantidad').AsInteger + Cantidad;
+        DM.Productos.Post;
+        Seguir:=false;
+      END;
+      DM.Productos.Next;
+    END;
+    DM.ProdPedidoParaPedido.Next;
+  end;
   DM.Pedidos.Edit;
   DM.Pedidos.FieldByName('Estado').AsString:='Anulado';
   DM.Pedidos.Post;
@@ -56,6 +82,7 @@ end;
 
 procedure TForm13.FormActivate(Sender: TObject);
 begin
+  
   DM.Pedidos.Filtered:=false;
   DM.Pedidos.Filter:= 'Evento = ''' + evento + ''' and Estado = ''Facturado''';
   DM.Pedidos.Filtered:=True;

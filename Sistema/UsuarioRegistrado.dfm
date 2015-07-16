@@ -836,6 +836,7 @@ object Form3: TForm3
         NumbersOnly = True
         ParentFont = False
         TabOrder = 0
+        OnKeyPress = Edit5KeyPress
       end
     end
     object GroupBox2: TGroupBox
@@ -881,7 +882,7 @@ object Form3: TForm3
       Color = clWhite
       ParentBackground = False
       ShowCaption = False
-      TabOrder = 2
+      TabOrder = 3
       object SpeedButton2: TSpeedButton
         AlignWithMargins = True
         Left = 6
@@ -917,7 +918,7 @@ object Form3: TForm3
       Color = clBtnHighlight
       ParentBackground = False
       ShowCaption = False
-      TabOrder = 3
+      TabOrder = 4
       object SpeedButton1: TSpeedButton
         AlignWithMargins = True
         Left = 6
@@ -952,15 +953,17 @@ object Form3: TForm3
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 2
       object DBLookupComboBox1: TDBLookupComboBox
         Left = 3
         Top = 32
         Width = 179
         Height = 27
+        Cursor = crHandPoint
         KeyField = 'Nombre'
         ListSource = DM.DS_EventosActivos
         TabOrder = 0
+        OnKeyPress = Edit5KeyPress
       end
     end
   end

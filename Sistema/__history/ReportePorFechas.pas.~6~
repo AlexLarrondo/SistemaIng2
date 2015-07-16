@@ -1,0 +1,57 @@
+unit ReportePorFechas;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Bases, ComCtrls, DBCtrls, Buttons, ExtCtrls, StdCtrls, ReporteFechas;
+
+type
+  TForm16 = class(TForm)
+    GroupBox1: TGroupBox;
+    GroupBox3: TGroupBox;
+    Panel2: TPanel;
+    SpeedButton2: TSpeedButton;
+    Panel1: TPanel;
+    SpeedButton1: TSpeedButton;
+    GroupBox5: TGroupBox;
+    GroupBox2: TGroupBox;
+    DBLookupComboBox1: TDBLookupComboBox;
+    DateTimePicker1: TDateTimePicker;
+    DateTimePicker2: TDateTimePicker;
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form16: TForm16;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm16.SpeedButton1Click(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TForm16.SpeedButton2Click(Sender: TObject);
+begin
+  DM.ReporteFecha.Close;
+  DM.ReporteFecha.Parameters.ParamByName('Evento').Value:=dblookupcombobox1.keyvalue;
+  DM.ReporteFecha.Parameters.ParamByName('Fecha1').Value:=DatetoStr(DateTimePicker1.Date);
+  DM.ReporteFecha.Parameters.ParamByName('Fecha2').Value:=DatetoStr(DateTimePicker2.Date);
+  DM.ReporteFecha.Open;
+  DM.CantPedidoRep2.Close;
+  DM.CantPedidoRep2.Parameters.ParamByName('Primera').Value:=DatetoStr(DateTimePicker1.Date) ;
+  DM.CantPedidoRep2.Parameters.ParamByName('Segunda').Value:=DatetoStr(DateTimePicker2.Date) ;
+  DM.CantPedidoRep2.Parameters.ParamByName('Ev').Value:=dblookupcombobox1.keyvalue;
+  DM.CantPedidoRep2.Open;
+  Form17.QuickRep1.preview;
+end;
+
+end.

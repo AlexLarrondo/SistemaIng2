@@ -806,18 +806,19 @@ object Form14: TForm14
     PrinterSettings.Collate = 0
     PrinterSettings.ColorOption = 0
     PrintIfEmpty = True
+    ReportTitle = 'Reporte '
     SnapToGrid = True
     Units = MM
     Zoom = 100
     PrevFormStyle = fsNormal
-    PreviewInitialState = wsNormal
-    PrevInitialZoom = qrZoomToFit
+    PreviewInitialState = wsMaximized
+    PrevInitialZoom = qrZoom100
     PreviewDefaultSaveType = stQRP
     object QRBand1: TQRBand
       Left = 38
       Top = 38
       Width = 718
-      Height = 154
+      Height = 131
       Frame.Color = clBlack
       Frame.DrawTop = True
       Frame.DrawBottom = True
@@ -829,12 +830,13 @@ object Form14: TForm14
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        407.458333333333400000
+        346.604166666666700000
         1899.708333333333000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbPageHeader
       object QRSysData1: TQRSysData
+        AlignWithMargins = True
         Left = 271
         Top = 65
         Width = 175
@@ -865,20 +867,20 @@ object Form14: TForm14
         FontSize = 22
       end
       object QRImage1: TQRImage
-        Left = 24
-        Top = 34
-        Width = 81
-        Height = 73
+        Left = 56
+        Top = 18
+        Width = 91
+        Height = 99
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          193.145833333333300000
-          63.500000000000000000
-          89.958333333333340000
-          214.312500000000000000)
+          261.937500000000000000
+          148.166666666666700000
+          47.625000000000000000
+          240.770833333333300000)
         Picture.Data = {
           0A544A504547496D61676507620000FFD8FFE000104A46494600010101006000
           600000FFE1009445786966000049492A00080000000200310102000B00000026
@@ -1670,9 +1672,9 @@ object Form14: TForm14
     end
     object QRBand3: TQRBand
       Left = 38
-      Top = 192
+      Top = 169
       Width = 718
-      Height = 73
+      Height = 49
       Frame.Color = clBlack
       Frame.DrawTop = True
       Frame.DrawBottom = True
@@ -1684,14 +1686,14 @@ object Form14: TForm14
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        193.145833333333300000
+        129.645833333333300000
         1899.708333333333000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbColumnHeader
       object QRLabel1: TQRLabel
         Left = 455
-        Top = 25
+        Top = 15
         Width = 39
         Height = 20
         Frame.Color = clBlack
@@ -1702,7 +1704,7 @@ object Form14: TForm14
         Size.Values = (
           52.916666666666660000
           1203.854166666667000000
-          66.145833333333340000
+          39.687500000000000000
           103.187500000000000000)
         Alignment = taLeftJustify
         AlignToBand = False
@@ -1724,7 +1726,7 @@ object Form14: TForm14
       end
       object QRLabel2: TQRLabel
         Left = 56
-        Top = 31
+        Top = 15
         Width = 70
         Height = 20
         Frame.Color = clBlack
@@ -1735,7 +1737,7 @@ object Form14: TForm14
         Size.Values = (
           52.916666666666660000
           148.166666666666700000
-          82.020833333333340000
+          39.687500000000000000
           185.208333333333300000)
         Alignment = taLeftJustify
         AlignToBand = False
@@ -1756,8 +1758,8 @@ object Form14: TForm14
         FontSize = 12
       end
       object QRLabel3: TQRLabel
-        Left = 240
-        Top = 31
+        Left = 241
+        Top = 15
         Width = 72
         Height = 20
         Frame.Color = clBlack
@@ -1767,8 +1769,8 @@ object Form14: TForm14
         Frame.DrawRight = False
         Size.Values = (
           52.916666666666660000
-          635.000000000000000000
-          82.020833333333340000
+          637.645833333333400000
+          39.687500000000000000
           190.500000000000000000)
         Alignment = taLeftJustify
         AlignToBand = False
@@ -1791,7 +1793,7 @@ object Form14: TForm14
     end
     object QRBand5: TQRBand
       Left = 38
-      Top = 265
+      Top = 218
       Width = 718
       Height = 40
       Frame.Color = clBlack
@@ -1897,7 +1899,7 @@ object Form14: TForm14
     end
     object QRBand4: TQRBand
       Left = 38
-      Top = 305
+      Top = 258
       Width = 718
       Height = 40
       Frame.Color = clBlack
@@ -1917,8 +1919,8 @@ object Form14: TForm14
       KeepOnOnePage = False
       BandType = rbSummary
       object QRExpr2: TQRExpr
-        Left = 468
-        Top = 16
+        Left = 455
+        Top = 15
         Width = 185
         Height = 17
         Frame.Color = clBlack
@@ -1928,10 +1930,10 @@ object Form14: TForm14
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          1238.250000000000000000
-          42.333333333333340000
+          1203.854166666667000000
+          39.687500000000000000
           489.479166666666600000)
-        Alignment = taCenter
+        Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
@@ -1942,14 +1944,14 @@ object Form14: TForm14
         Transparent = False
         WordWrap = True
         Expression = 'SUM(ReporteHora.PrecioXProd)'
-        Mask = '$ 00.00'
+        Mask = '$00.00'
         ExportAs = exptNumeric
         WrapStyle = BreakOnSpaces
         FontSize = 10
       end
       object QRLabel6: TQRLabel
-        Left = 407
-        Top = 16
+        Left = 391
+        Top = 15
         Width = 39
         Height = 20
         Frame.Color = clBlack
@@ -1959,8 +1961,8 @@ object Form14: TForm14
         Frame.DrawRight = False
         Size.Values = (
           52.916666666666660000
-          1076.854166666667000000
-          42.333333333333340000
+          1034.520833333333000000
+          39.687500000000000000
           103.187500000000000000)
         Alignment = taLeftJustify
         AlignToBand = False
@@ -1981,8 +1983,8 @@ object Form14: TForm14
         FontSize = 12
       end
       object QRDBText4: TQRDBText
-        Left = 302
-        Top = 17
+        Left = 222
+        Top = 15
         Width = 75
         Height = 17
         Frame.Color = clBlack
@@ -1992,15 +1994,15 @@ object Form14: TForm14
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          799.041666666666800000
-          44.979166666666670000
+          587.375000000000000000
+          39.687500000000000000
           198.437500000000000000)
         Alignment = taCenter
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
         Color = clWhite
-        DataSet = DM.ReporteHora
+        DataSet = DM.CantPedidoRep
         DataField = 'CantPedidos'
         Transparent = False
         WordWrap = True
@@ -2009,9 +2011,9 @@ object Form14: TForm14
         FontSize = 10
       end
       object QRLabel4: TQRLabel
-        Left = 224
+        Left = 56
         Top = 15
-        Width = 64
+        Width = 152
         Height = 20
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -2020,14 +2022,14 @@ object Form14: TForm14
         Frame.DrawRight = False
         Size.Values = (
           52.916666666666660000
-          592.666666666666800000
+          148.166666666666700000
           39.687500000000000000
-          169.333333333333300000)
+          402.166666666666600000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'Pedidos'
+        Caption = 'N'#250'mero de Pedidos'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText

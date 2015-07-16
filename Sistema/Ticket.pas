@@ -32,6 +32,10 @@ type
     QRDBText7: TQRDBText;
     QRDBText8: TQRDBText;
     QRLabel5: TQRLabel;
+    QRLabel8: TQRLabel;
+    QRLabel9: TQRLabel;
+    procedure QuickRep1BeforePrint(Sender: TCustomQuickRep;
+      var PrintReport: Boolean);
   private
     { Private declarations }
   public
@@ -44,5 +48,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TForm12.QuickRep1BeforePrint(Sender: TCustomQuickRep;
+  var PrintReport: Boolean);
+begin
+  QuickRep1.PrinterSettings.Copies:=2;
+end;
 
 end.

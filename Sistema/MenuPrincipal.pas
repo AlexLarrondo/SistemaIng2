@@ -79,20 +79,24 @@ begin
   Form4.Caption:= 'SPR - Sistema de pedidos y reportes / Usuario: '+Nombre+' '+Apellido + ' / Evento: ' + evento;
   if Tipo = 'Usuario común' then begin
     Dardealtaproducto1.Enabled:=false;
-    Eventos1.Enabled:=false
+    Eventos1.Enabled:=false;
+    Reportes1.Enabled:=false
     end
     else begin
       Dardealtaproducto1.Enabled:=true;
-      Eventos1.Enabled:=true
+      Eventos1.Enabled:=true;
+      Reportes1.Enabled:=true
       end;
 
  if evento = '<Elije un evento>' then begin
     GenerarPedido1.Enabled:=false;
     ListarPedidos1.Enabled:=False;
+    GenerarReporteDiario1.Enabled:=false;
     end
     else begin
       GenerarPedido1.Enabled:=true;
        ListarPedidos1.Enabled:=true;
+       GenerarReporteDiario1.Enabled:=true;
      end;
 
 end;

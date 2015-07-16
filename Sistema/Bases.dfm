@@ -1,8 +1,8 @@
 object DM: TDM
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 457
-  Width = 641
+  Height = 386
+  Width = 775
   object ADOConnection1: TADOConnection
     Connected = True
     ConnectionString = 
@@ -251,7 +251,7 @@ object DM: TDM
     Connection = ADOConnection1
     CursorType = ctStatic
     TableName = 'Eventos'
-    Left = 384
+    Left = 360
     Top = 16
     object EventosNombre: TWideStringField
       FieldName = 'Nombre'
@@ -303,7 +303,7 @@ object DM: TDM
         'WHERE (:Fecha1 >= Fecha_Inicio) and (:Fecha2 <= Fecha_Final) and' +
         ' (Nombre <> :Nombre)'
       'ORDER BY Fecha_Inicio')
-    Left = 384
+    Left = 360
     Top = 72
   end
   object DataSource6: TDataSource
@@ -344,16 +344,16 @@ object DM: TDM
       
         'WHERE (:FechaFin1 >= Fecha_Inicio) and (:FechaFin2 <= Fecha_Fina' +
         'l)')
-    Left = 544
-    Top = 64
+    Left = 568
+    Top = 40
   end
   object ProductoPedido: TADOTable
     Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     TableName = 'ProductoPedido'
-    Left = 384
-    Top = 120
+    Left = 360
+    Top = 128
     object ProductoPedidoId: TAutoIncField
       FieldName = 'Id'
       ReadOnly = True
@@ -381,7 +381,7 @@ object DM: TDM
     Connection = ADOConnection1
     CursorType = ctStatic
     TableName = 'Pedidos'
-    Left = 368
+    Left = 360
     Top = 240
     object PedidosId: TAutoIncField
       DisplayWidth = 12
@@ -447,7 +447,7 @@ object DM: TDM
       'SELECT *'
       'FROM ProductoPedido'
       'WHERE  :Num = Id')
-    Left = 368
+    Left = 360
     Top = 184
     object ProdPedidoParaPedidoId: TIntegerField
       FieldName = 'Id'
@@ -488,8 +488,8 @@ object DM: TDM
       'SELECT *'
       'FROM Pedidos P'
       'WHERE (:Evento = P.Evento) ')
-    Left = 136
-    Top = 320
+    Left = 144
+    Top = 304
   end
   object Tciket: TADOQuery
     Active = True
@@ -502,21 +502,39 @@ object DM: TDM
         'cio'
       'FROM Pedidos P INNER JOIN ProductoPedido M ON M.Id = P.Id'
       'ORDER BY M.NombreProd')
-    Left = 368
-    Top = 312
+    Left = 360
+    Top = 304
+    object TciketPrecio_Total: TBCDField
+      FieldName = 'Precio_Total'
+      Precision = 19
+    end
+    object TciketEvento: TWideStringField
+      FieldName = 'Evento'
+      Size = 255
+    end
+    object TciketCantidad: TIntegerField
+      FieldName = 'Cantidad'
+    end
+    object TciketNombreProd: TWideStringField
+      FieldName = 'NombreProd'
+      Size = 255
+    end
+    object TciketPrecio: TBCDField
+      FieldName = 'Precio'
+      Precision = 19
+    end
   end
   object DS_Ticket: TDataSource
     DataSet = Tciket
-    Left = 440
-    Top = 312
+    Left = 448
+    Top = 304
   end
   object DS_Pedidos: TDataSource
     DataSet = Pedidos
-    Left = 440
-    Top = 248
+    Left = 448
+    Top = 240
   end
   object ReporteHora: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <
@@ -540,19 +558,42 @@ object DM: TDM
       end>
     SQL.Strings = (
       
-        'SELECT O.NombreProd, COUNT(P.Id) as CantPedidos, SUM(O.Cantidad)' +
-        ' as CantProdutos, SUM(O.Precio) as PrecioXProd'
-      'FROM Pedidos P, ProductoPedido O'
-      'WHERE P.Fecha >= :Desde and P.Fecha <= :Hasta  and P.Id=O.Id'
+        'SELECT O.NombreProd, SUM(O.Cantidad) as CantProdutos, SUM(O.Prec' +
+        'io) as PrecioXProd'
+      'FROM Pedidos P ,ProductoPedido O'
+      
+        'WHERE P.Fecha >= :Desde and P.Fecha <= :Hasta and P.Id=O.Id and ' +
+        'P.Estado='#39'Facturado'#39
       'GROUP BY O.NombreProd')
-    Left = 536
-    Top = 208
+    Left = 568
+    Top = 176
+    object ReporteHoraNombreProd: TWideStringField
+      FieldName = 'NombreProd'
+      Size = 255
+    end
+    object ReporteHoraCantProdutos: TFloatField
+      FieldName = 'CantProdutos'
+    end
+    object ReporteHoraPrecioXProd: TBCDField
+      FieldName = 'PrecioXProd'
+      DisplayFormat = '$ 00.00'
+      Precision = 19
+    end
   end
   object ReporteFecha: TADOQuery
     Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <
+      item
+        Name = 'Evento'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end
       item
         Name = 'Fecha1'
         Attributes = [paNullable]
@@ -570,9 +611,54 @@ object DM: TDM
         Precision = 255
         Size = 510
         Value = Null
+      end>
+    SQL.Strings = (
+      
+        'SELECT DISTINCT NombreProd, Datevalue(P.Fecha), SUM(Cantidad) AS' +
+        ' CantProdutos, SUM(Precio) AS PrecioxProd'
+      'FROM ProductoPedido O, Pedidos P'
+      
+        'WHERE O.ID = P.ID and O.ID in (SELECT ID FROM Pedidos WHERE Esta' +
+        'do = '#39'Facturado'#39' and Evento = :Evento and Fecha >= :Fecha1 and F' +
+        'echa <= :Fecha2 )'
+      'GROUP BY NombreProd, DateValue(P.Fecha)'
+      'ORDER BY Datevalue (p.fecha)')
+    Left = 568
+    Top = 120
+    object ReporteFechaNombreProd: TWideStringField
+      DisplayWidth = 14
+      FieldName = 'NombreProd'
+      Size = 255
+    end
+    object ReporteFechaCantProdutos: TFloatField
+      DisplayWidth = 13
+      FieldName = 'CantProdutos'
+    end
+    object ReporteFechaPrecioXProd: TBCDField
+      DisplayWidth = 23
+      FieldName = 'PrecioXProd'
+      DisplayFormat = '$ 00.00'
+      Precision = 19
+    end
+    object ReporteFechaExpr1001: TDateTimeField
+      FieldName = 'Expr1001'
+    end
+  end
+  object CantPedidoRep: TADOQuery
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'Primera'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
       end
       item
-        Name = 'Evento'
+        Name = 'Segunda'
         Attributes = [paNullable]
         DataType = ftWideString
         NumericScale = 255
@@ -581,15 +667,47 @@ object DM: TDM
         Value = Null
       end>
     SQL.Strings = (
+      'SELECT COUNT (Id) as CantPedidos'
+      'FROM Pedidos'
       
-        'SELECT O.NombreProd, COUNT(P.Id) as CantPedidos, SUM(O.Cantidad)' +
-        ' as CantProdutos, SUM(O.Precio) as PrecioXProd'
-      'FROM Pedidos P, ProductoPedido O'
-      
-        'WHERE P.Fecha >= :Fecha1 and P.Fecha <= :Fecha2  and P.Id=O.Id  ' +
-        'and P.Evento = :Evento'
-      'GROUP BY O.NombreProd')
-    Left = 536
-    Top = 264
+        'WHERE Fecha >= :Primera and Fecha <= :Segunda and Estado='#39'Factur' +
+        'ado'#39)
+    Left = 656
+    Top = 176
+    object CantPedidoRepCantPedidos: TIntegerField
+      FieldName = 'CantPedidos'
+    end
+  end
+  object CantPedidoRep2: TADOQuery
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'f'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end
+      item
+        Name = 'f1'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT COUNT (Id) as CantPedidos'
+      'FROM Pedidos'
+      'WHERE Fecha >= :f and Fecha <= :f1 and Estado='#39'Facturado'#39)
+    Left = 648
+    Top = 120
+    object IntegerField1: TIntegerField
+      FieldName = 'CantPedidos'
+    end
   end
 end

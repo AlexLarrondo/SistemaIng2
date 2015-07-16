@@ -85,6 +85,7 @@ begin
   Panel6.Visible:=false;
   Panel1.Visible:=true;
   Panel2.Visible:=true;
+  Height:=134;
 end;
 
 procedure TForm5.SpeedButton1Click(Sender: TObject);
@@ -112,7 +113,7 @@ en caso de no existir se notifica. Si existe se abren campos ocultos a llenar}
           Panel2.Visible:=false;
           Panel3.Visible:=true;
           Panel4.Visible:=true;
-
+          Height:=315;
           Edit1.Text:=DM.ADOQuery1.Fields[1].AsString[1];
           Edit3.Text:=DM.ADOQuery1.Fields[2].AsString[1];
         end;
@@ -122,8 +123,13 @@ procedure TForm5.SpeedButton3Click(Sender: TObject);
 begin
 {Chequea que el nombre y apellido ingresado sean correctos}
   if ((Edit1.Text=DM.ADOQuery1.Fields[1].AsString) and (Edit3.Text=DM.ADOQuery1.Fields[2].AsString)) then begin
+      Height:=442;
       GroupBox2.visible:=true;
       GroupBox5.Visible:=true;
+      LABEL3.Visible:=true;
+      LABEL4.Visible:=true;
+      LABEL5.Visible:=true;
+      LABEL6.Visible:=true;
       Panel3.Visible:=false;
       Panel4.Visible:=false;
       Panel5.Visible:=true;
@@ -142,6 +148,7 @@ begin
    Panel4.Visible:=false;
    Panel1.Visible:=true;
    Panel2.Visible:=true;
+   Height:=134;
 end;
 
 procedure TForm5.SpeedButton5Click(Sender: TObject);
@@ -169,6 +176,10 @@ procedure TForm5.SpeedButton6Click(Sender: TObject);
 begin
 {Vuelve al paso 1 mostrando el campo DNI}
    DM.Usuarios.Cancel;
+   LABEL3.Visible:=false;
+   LABEL4.Visible:=false;
+   LABEL5.Visible:=false;
+   LABEL6.Visible:=false;
    GroupBox3.visible:=false;
    GroupBox4.Visible:=false;
    GroupBox2.visible:=false;
@@ -179,6 +190,7 @@ begin
    Panel6.Visible:=false;
    Panel1.Visible:=true;
    Panel2.Visible:=true;
+   Height:=134;
 end;
 
 end.
